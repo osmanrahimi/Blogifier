@@ -19,23 +19,24 @@ namespace Blogifier
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            System.Action<DbContextOptionsBuilder> databaseOptions = options => 
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+
+            services.AddDbContext<ApplicationDbContext>(databaseOptions);
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            Core.Configuration.InitServices(services, databaseOptions, Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -58,6 +59,8 @@ namespace Blogifier
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Core.Configuration.InitApplication(app, env);
         }
     }
 }
