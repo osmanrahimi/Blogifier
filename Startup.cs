@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
+using Serilog.Events;
 
 namespace Blogifier
 {
@@ -15,6 +17,11 @@ namespace Blogifier
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Log.Logger = new LoggerConfiguration()
+              .Enrich.FromLogContext()
+              .WriteTo.RollingFile("Logs/blogifier-{Date}.txt", LogEventLevel.Warning)
+              .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +36,9 @@ namespace Blogifier
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddLogging(loggingBuilder =>
+                loggingBuilder.AddSerilog(dispose: true));
 
             services.AddTransient<IEmailSender, EmailSender>();
 
