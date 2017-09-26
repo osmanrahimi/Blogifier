@@ -1,0 +1,42 @@
+.bf-posts-filters {
+    @include unstyled(ul);
+    padding: 0 1.5rem 2rem;
+
+    .filters-label {
+        margin: 0;
+        display: block;
+        color: $cl-white-50;
+        font-size: .875rem;
+        padding-left: 2.1875rem;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .filters-group {
+        margin-left: -.125rem;
+
+        &-title {
+            display: block;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            font-size: .875rem;
+            color: $cl-white-20;
+            margin-bottom: .5rem;
+        }
+
+        &-category {
+            &-list {
+                max-height: 13.5rem;
+                overflow-x: hidden !important;
+            }
+        }
+    }
+
+    @media screen and (max-width:55rem) {
+        display: none;
+    }
+}
