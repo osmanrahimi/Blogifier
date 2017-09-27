@@ -1,4 +1,5 @@
-﻿using Blogifier.Core.Data.Interfaces;
+﻿using Blogifier.Core.Data.Domain;
+using Blogifier.Core.Data.Interfaces;
 using Blogifier.Models;
 using Blogifier.Models.ManageViewModels;
 using Blogifier.Services;
@@ -63,7 +64,8 @@ namespace Blogifier.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                Profile = GetProfile()
             };
 
             return View(model);
@@ -502,6 +504,12 @@ namespace Blogifier.Controllers
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
+
+        private Profile GetProfile()
+        {
+            return _db.Profiles.Single(b => b.IdentityName == User.Identity.Name);
+        }
+
 
         #endregion
     }

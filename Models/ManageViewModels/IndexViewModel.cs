@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Blogifier.Core.Data.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Blogifier.Models.ManageViewModels
 {
-    public class IndexViewModel
+    public class IndexViewModel : AdminBaseModel
     {
         public string Username { get; set; }
 
