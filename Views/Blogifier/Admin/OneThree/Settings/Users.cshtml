@@ -3,7 +3,67 @@
 @using Blogifier.Core.Extensions
 @{
     Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
+    var searchTerm = Context.Request.Query["search"];
 }
-<div class="bf-settings bf-settings-about">
-    <h1>Users</h1>
+
+    <div class="bf-posts-toolbar">
+        <label class="custom-control custom-checkbox float-left"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
+        <button type="button" class="btn btn-primary btn-sm float-left mr-3" data-toggle="modal" data-target="#createUserModal">Create User</button>
+        <div class="loading loading-sm float-left mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
+        <button type="button" class="btn btn-outline-secondary btn-sm btn-icon" data-toggle="tooltip" onclick="" title="Delete"><i class="fa fa-trash"></i></button>
+    </div>
+
+<ul class="bf-posts-list" aria-label="posts">
+    @if (!string.IsNullOrEmpty(searchTerm))
+    {
+        <li class="item item-search">
+            <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
+        </li>
+    }
+    <li class="item">
+        <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="id" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+        <a class="item-link">User Name</a>
+        <div class="item-info">
+            <span class="item-info-views">16541 Posts</span>
+        </div>
+        <a class="item-show" href="/author-name/" target="_blank" role="button"><i class="fa fa-external-link-square"></i></a>
+    </li>
+</ul>
+
+
+<!-- Create User Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createUserModalLabel">Create User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Password Confirm</label>
+                    <input type="password" class="form-control" />
+                </div>
+                <button type="button" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts{
+    <script src="~/blogifier/admin/onethree/js/app/usersController.js"></script>
+}
