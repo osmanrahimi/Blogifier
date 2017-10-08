@@ -23,9 +23,19 @@ namespace Blogifier.Controllers
 
         [VerifyProfile]
         [Route("settings/users")]
-        public IActionResult Import()
+        public IActionResult Users(int page = 1)
         {
-            return View(_theme + "Settings/Users.cshtml", new AdminBaseModel { Profile = GetProfile() });
+            var pager = new Pager(page);
+            var blogs = _db.Profiles.ProfileList(p => p.Id > 0, pager);
+
+            var model = new AdminApplicationModel
+            {
+                Profile = GetProfile(),
+                Blogs = blogs,
+                Pager = pager
+            };
+
+            return View(_theme + "Settings/Users.cshtml", model);
         }
 
         private Profile GetProfile()
