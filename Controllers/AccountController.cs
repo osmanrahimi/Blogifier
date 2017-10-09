@@ -1,4 +1,8 @@
-﻿using Blogifier.Models;
+﻿using Blogifier.Core.Common;
+using Blogifier.Core.Data.Domain;
+using Blogifier.Core.Data.Interfaces;
+using Blogifier.Core.Extensions;
+using Blogifier.Models;
 using Blogifier.Models.AccountViewModels;
 using Blogifier.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -7,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -20,17 +25,20 @@ namespace Blogifier.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IUnitOfWork _db;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IUnitOfWork db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _db = db;
         }
 
         [TempData]
@@ -220,14 +228,39 @@ namespace Blogifier.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation(string.Format("Created a new account for {0}", user.UserName));
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
+                    
+                    // create new profile
+                    var profile = new Profile();
+
+                    if (_db.Profiles.All().ToList().Count == 0 || model.IsAdmin)
+                    {
+                        profile.IsAdmin = true;
+                    }
+                    
+                    profile.AuthorName = model.AuthorName;
+                    profile.AuthorEmail = model.Email;
+                    profile.Title = "New blog";
+                    profile.Description = "New blog description";
+
+                    profile.IdentityName = user.UserName;
+                    profile.Slug = SlugFromTitle(profile.AuthorName);
+                    profile.Avatar = ApplicationSettings.ProfileAvatar;
+                    profile.BlogTheme = ApplicationSettings.BlogTheme;
+
+                    profile.LastUpdated = Core.Common.SystemClock.Now();
+
+                    _db.Profiles.Add(profile);
+                    _db.Complete();
+
+                    _logger.LogInformation(string.Format("Created a new profile at /{0}", profile.Slug));
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -453,6 +486,22 @@ namespace Blogifier.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
+        }
+
+        string SlugFromTitle(string title)
+        {
+            var slug = title.ToSlug();
+            if (_db.Profiles.Single(b => b.Slug == slug) != null)
+            {
+                for (int i = 2; i < 100; i++)
+                {
+                    if (_db.Profiles.Single(b => b.Slug == slug + i.ToString()) == null)
+                    {
+                        return slug + i.ToString();
+                    }
+                }
+            }
+            return slug;
         }
 
         #endregion
