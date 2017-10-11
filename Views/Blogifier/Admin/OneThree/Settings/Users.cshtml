@@ -9,12 +9,12 @@
     var cntTo = pgr.CurrentPage * pgr.ItemsPerPage < pgr.Total ? pgr.CurrentPage * pgr.ItemsPerPage : pgr.Total;
 }
 
-    <div class="bf-posts-toolbar">
-        <label class="custom-control custom-checkbox float-left"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
-        <button type="button" class="btn btn-primary btn-sm float-left mr-3" data-toggle="modal" data-target="#createUserModal">Create User</button>
-        <div class="loading loading-sm float-left mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
-        <button type="button" class="btn btn-outline-secondary btn-sm btn-icon" data-toggle="tooltip" onclick="" title="Delete"><i class="fa fa-trash"></i></button>
-    </div>
+<div class="bf-posts-toolbar">
+    <label class="custom-control custom-checkbox float-left"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
+    <button type="button" class="btn btn-primary btn-sm float-left mr-3" data-toggle="modal" data-target="#createUserModal">Create User</button>
+    <button type="button" id="postsMultiactions" class="btn btn-outline-secondary btn-sm pull-left btn-icon" style="display: none" data-toggle="tooltip" onclick="return usersController.removeUser()" title="Delete"><i class="fa fa-trash"></i></button>
+    <div class="loading loading-sm pull-left mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
+</div>
 
 <ul class="bf-posts-list" aria-label="posts">
     @if (!string.IsNullOrEmpty(searchTerm))
@@ -26,7 +26,7 @@
     @foreach (var blog in Model.Blogs)
     {
         <li class="item">
-            <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="id" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+            <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="@blog.ProfileId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
             <a class="item-link">@blog.AuthorName</a>
             <div class="item-info">
                 <span class="item-info-views">@blog.PostCount Posts</span>

@@ -3,6 +3,7 @@ using Blogifier.Core.Data.Domain;
 using Blogifier.Core.Data.Interfaces;
 using Blogifier.Core.Extensions;
 using Blogifier.Core.Middleware;
+using Blogifier.Core.Services.FileSystem;
 using Blogifier.Models;
 using Blogifier.Models.AccountViewModels;
 using Blogifier.Models.Admin;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -77,7 +79,7 @@ namespace Blogifier.Controllers
                 {
                     _logger.LogInformation(string.Format("Created a new account for {0}", user.UserName));
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    // await _signInManager.SignInAsync(user, isPersistent: false);
 
                     // create new profile
                     var profile = new Profile();
@@ -122,6 +124,66 @@ namespace Blogifier.Controllers
             };
             return View(_theme + "Settings/Users.cshtml", regModel);
         }
+
+
+        [HttpDelete("{id}")]
+        [Route("settings/users/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var admin = GetProfile();
+
+            if (!admin.IsAdmin || admin.Id == id)
+                return NotFound();
+
+            var profile = _db.Profiles.Single(p => p.Id == id);
+
+            _logger.LogInformation(string.Format("Delete blog {0} by {1}", profile.Title, profile.AuthorName));
+
+            var assets = _db.Assets.Find(a => a.ProfileId == id);
+            _db.Assets.RemoveRange(assets);
+            _db.Complete();
+            _logger.LogInformation("Assets deleted");
+
+            var categories = _db.Categories.Find(c => c.ProfileId == id);
+            _db.Categories.RemoveRange(categories);
+            _db.Complete();
+            _logger.LogInformation("Categories deleted");
+
+            var posts = _db.BlogPosts.Find(p => p.ProfileId == id);
+            _db.BlogPosts.RemoveRange(posts);
+            _db.Complete();
+            _logger.LogInformation("Posts deleted");
+
+            var fields = _db.CustomFields.Find(f => f.CustomType == CustomType.Profile && f.ParentId == id);
+            _db.CustomFields.RemoveRange(fields);
+            _db.Complete();
+            _logger.LogInformation("Custom fields deleted");
+
+            var profileToDelete = _db.Profiles.Single(b => b.Id == id);
+
+            var storage = new BlogStorage(profileToDelete.Slug);
+            storage.DeleteFolder("");
+            _logger.LogInformation("Storage deleted");
+
+            _db.Profiles.Remove(profileToDelete);
+            _db.Complete();
+            _logger.LogInformation("Profile deleted");
+
+            // remove login
+
+            var user = await _userManager.FindByNameAsync(profile.IdentityName);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new ApplicationException($"Unexpected error occurred removing login for user with ID '{user.Id}'.");
+            }
+            return new NoContentResult();
+        }
+
 
         #region Helpers
 
