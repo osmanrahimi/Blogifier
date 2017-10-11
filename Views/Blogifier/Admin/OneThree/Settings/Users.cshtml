@@ -26,7 +26,10 @@
     @foreach (var blog in Model.Blogs)
     {
         <li class="item">
-            <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="@blog.ProfileId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+            @if (!blog.IsAdmin)
+            {
+                <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="@blog.ProfileId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+            }
             <a class="item-link">@blog.AuthorName</a>
             <div class="item-info">
                 <span class="item-info-views">@blog.PostCount Posts</span>
