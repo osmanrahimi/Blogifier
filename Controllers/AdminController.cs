@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -53,13 +54,9 @@ namespace Blogifier.Controllers
             var pager = new Pager(page);
             var blogs = _db.Profiles.ProfileList(p => p.Id > 0, pager);
 
-            var model = new UsersViewModel
-            {
-                Profile = profile,
-                RegisterModel = new RegisterViewModel(),
-                Blogs = blogs,
-                Pager = pager
-            };
+            var model = GetUsersModel();
+            model.Blogs = blogs;
+            model.Pager = pager;
 
             return View(_theme + "Settings/Users.cshtml", model);
         }
@@ -106,6 +103,12 @@ namespace Blogifier.Controllers
 
                     _logger.LogInformation(string.Format("Created a new profile at /{0}", profile.Slug));
 
+                    if (model.RegisterModel.SendEmailNotification)
+                    {
+                        //await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
+                        _logger.LogWarning("EMAIL TEST: sending notification to : " + model.RegisterModel.Email);
+                    }
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
@@ -115,13 +118,10 @@ namespace Blogifier.Controllers
             var pager = new Pager(1);
             var blogs = _db.Profiles.ProfileList(p => p.Id > 0, pager);
 
-            var regModel = new UsersViewModel
-            {
-                Profile = GetProfile(),
-                RegisterModel = new RegisterViewModel(),
-                Blogs = blogs,
-                Pager = pager
-            };
+            var regModel = GetUsersModel();
+            regModel.Blogs = blogs;
+            regModel.Pager = pager;
+
             return View(_theme + "Settings/Users.cshtml", regModel);
         }
 
@@ -226,6 +226,29 @@ namespace Blogifier.Controllers
                 }
             }
             return slug;
+        }
+
+        UsersViewModel GetUsersModel()
+        {
+            var model = new UsersViewModel
+            {
+                Profile = GetProfile(),
+                RegisterModel = new RegisterViewModel()
+            };
+
+            var fields = _db.CustomFields.Find(f => f.CustomType == CustomType.Profile && f.ParentId == model.Profile.Id);
+            if (fields != null && fields.Count() > 0)
+            {
+                foreach (var field in fields)
+                {
+                    if(field.CustomKey == "SendGridApiKey")
+                    {
+                        model.RegisterModel.SendGridApiKey = field.CustomValue;
+                        break;
+                    }
+                }
+            }
+            return model;
         }
 
         #endregion

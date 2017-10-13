@@ -1,4 +1,5 @@
-﻿using Blogifier.Core.Extensions;
+﻿using Blogifier.Core.Data.Interfaces;
+using Blogifier.Core.Extensions;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
@@ -9,19 +10,26 @@ namespace Blogifier.Services
     // For more details see https://go.microsoft.com/fwlink/?LinkID=532713
     public class EmailSender : IEmailSender
     {
-        public Task SendEmailAsync(string email, string subject, string message)
+        private readonly IUnitOfWork _db;
+
+        public EmailSender(IUnitOfWork db)
         {
-            return Execute(email, subject, message);
+            _db = db;
         }
 
-        static async Task Execute(string email, string subject, string message)
+        public Task SendEmailAsync(string to, string subject, string message)
         {
-            var apiKey = "your-sendgrid-api-key";
+            return Execute(to, subject, message);
+        }
 
-            var from = new EmailAddress("we@us.com");
-            var to = new EmailAddress(email);
+        static async Task Execute(string emailTo, string subject, string message)
+        {
+            
 
-            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("aaa");
+            var to = new EmailAddress(emailTo);
+
+            var client = new SendGridClient("bbb");
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, message.StripHtml(), message);
             var response = await client.SendEmailAsync(msg);

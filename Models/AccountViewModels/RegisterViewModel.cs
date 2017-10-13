@@ -24,7 +24,12 @@ namespace Blogifier.Models.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Administrator?")]
+        [Display(Name = "Set this user as administrator?")]
         public bool IsAdmin { get; set; }
+
+        [Display(Name = "SendGrid API Key")]
+        public string SendGridApiKey { get; set; }
+        [Display(Name = "Send email notification?")]
+        public bool SendEmailNotification { get; set; }
     }
 }

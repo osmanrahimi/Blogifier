@@ -173,11 +173,7 @@ namespace Blogifier.Controllers
                 {
                     _logger.LogInformation(string.Format("Created a new account for {0}", user.UserName));
 
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    // await _signInManager.SignInAsync(user, isPersistent: false);
                     
                     // create new profile
                     var profile = new Profile();
@@ -203,6 +199,12 @@ namespace Blogifier.Controllers
                     _db.Complete();
 
                     _logger.LogInformation(string.Format("Created a new profile at /{0}", profile.Slug));
+
+                    if (model.SendEmailNotification)
+                    {
+                        //await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
+                        _logger.LogWarning("EMAIL TEST: sending notification to : " + model.Email);
+                    }
 
                     return RedirectToLocal(returnUrl);
                 }
@@ -264,8 +266,10 @@ namespace Blogifier.Controllers
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+
                 await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                    $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 

@@ -3,6 +3,8 @@
     Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
     var searchTerm = Context.Request.Query["search"];
 
+    var emailEnabled = Model.RegisterModel.SendGridApiKey.Length > 0;
+
     var reg = Model.RegisterModel;
     var pgr = Model.Pager;
     var cntFrom = pgr.CurrentPage == 1 ? 1 : (pgr.CurrentPage - 1) * pgr.ItemsPerPage + 1;
@@ -95,6 +97,17 @@
                             </label>
                         </div>
                     </div>
+                    @if (emailEnabled)
+                    {
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label asp-for="RegisterModel.SendEmailNotification">
+                                    <input asp-for="RegisterModel.SendEmailNotification" />
+                                    @Html.DisplayNameFor(m => m.RegisterModel.SendEmailNotification)
+                                </label>
+                            </div>
+                        </div>
+                    }
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>
             </div>

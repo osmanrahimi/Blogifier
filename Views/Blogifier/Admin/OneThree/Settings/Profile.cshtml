@@ -1,6 +1,12 @@
 ﻿@model Blogifier.Core.Data.Models.SettingsProfile
 @{
     Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
+    if (!Model.CustomFields.ContainsKey("SendGridApiKey")) { Model.CustomFields.Add("SendGridApiKey", ""); }
+    if (!Model.CustomFields.ContainsKey("Google")) { Model.CustomFields.Add("Google", ""); }
+    if (!Model.CustomFields.ContainsKey("Twitter")) { Model.CustomFields.Add("Twitter", ""); }
+    if (!Model.CustomFields.ContainsKey("Github")) { Model.CustomFields.Add("Github", ""); }
+    if (!Model.CustomFields.ContainsKey("Facebook")) { Model.CustomFields.Add("Facebook", ""); }
+    if (!Model.CustomFields.ContainsKey("Instagram")) { Model.CustomFields.Add("Instagram", ""); }
 }
 <div class="bf-settings bf-settings-profile">
     <form method="post" asp-controller="Settings" asp-action="Profile" asp-antiforgery="true">
@@ -23,6 +29,10 @@
                     <button type="button" class="btn btn-secondary btn-upload" onclick="return fileManagerController.open(updateAvatarCallback);">upload</button>
                 </span>
             </div>
+        </div>
+        <div class="form-group">
+            <label>SendGrid API Key</label>
+            <input type="text" asp-for='CustomFields["SendGridApiKey"]' class="form-control" />
         </div>
         <div class="form-group">
             <label>Facebook Link</label>
