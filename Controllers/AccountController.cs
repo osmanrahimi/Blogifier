@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Blogifier.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IConfiguration _config;
         private readonly ILogger _logger;
         private readonly IUnitOfWork _db;
 
@@ -30,12 +32,14 @@ namespace Blogifier.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
+            IConfiguration config,
             ILogger<AccountController> logger,
             IUnitOfWork db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _config = config;
             _logger = logger;
             _db = db;
         }
@@ -51,7 +55,8 @@ namespace Blogifier.Controllers
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
-            ViewData["ShowRegistration"] = ShowRegistration();
+            ViewData["ShowRegistration"] = IsFirstAdminAccount();
+            ViewData["ShowFogotPassword"] = _emailSender.EmailServiceEnabled(); // EmailServiceEnabled();
             return View();
         }
 
@@ -82,63 +87,7 @@ namespace Blogifier.Controllers
                     return View(model);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = null)
-        {
-            // Ensure the user has gone through the username & password screen first
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load two-factor authentication user.");
-            }
-
-            ViewData["ReturnUrl"] = returnUrl;
-
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LoginWithRecoveryCode(LoginWithRecoveryCodeViewModel model, string returnUrl = null)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load two-factor authentication user.");
-            }
-
-            var recoveryCode = model.RecoveryCode.Replace(" ", string.Empty);
-
-            var result = await _signInManager.TwoFactorRecoveryCodeSignInAsync(recoveryCode);
-
-            if (result.Succeeded)
-            {
-                _logger.LogInformation("User with ID {UserId} logged in with a recovery code.", user.Id);
-                return RedirectToLocal(returnUrl);
-            }
-            if (result.IsLockedOut)
-            {
-                _logger.LogWarning("User with ID {UserId} account locked out.", user.Id);
-                return RedirectToAction(nameof(Lockout));
-            }
-            else
-            {
-                _logger.LogWarning("Invalid recovery code entered for user with ID {UserId}", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
-                return View();
-            }
         }
 
         [HttpGet]
@@ -152,7 +101,8 @@ namespace Blogifier.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            if (!ShowRegistration())
+            // block registration if admin already added
+            if (!IsFirstAdminAccount())
                 return View("Error");
 
             ViewData["ReturnUrl"] = returnUrl;
@@ -172,8 +122,6 @@ namespace Blogifier.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(string.Format("Created a new account for {0}", user.UserName));
-
-                    // await _signInManager.SignInAsync(user, isPersistent: false);
                     
                     // create new profile
                     var profile = new Profile();
@@ -202,16 +150,12 @@ namespace Blogifier.Controllers
 
                     if (model.SendEmailNotification)
                     {
-                        //await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
-                        _logger.LogWarning("EMAIL TEST: sending notification to : " + model.Email);
+                        await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
                     }
-
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -256,14 +200,12 @@ namespace Blogifier.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null)
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
+                    // Don't reveal that the user does not exist
                     return RedirectToAction(nameof(ForgotPasswordConfirmation));
                 }
 
-                // For more information on how to enable account confirmation and password reset please
-                // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
 
@@ -272,8 +214,6 @@ namespace Blogifier.Controllers
 
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -327,13 +267,6 @@ namespace Blogifier.Controllers
             return View();
         }
 
-
-        [HttpGet]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
         #region Helpers
 
         private void AddErrors(IdentityResult result)
@@ -372,9 +305,24 @@ namespace Blogifier.Controllers
             return slug;
         }
 
-        bool ShowRegistration()
+        bool IsFirstAdminAccount()
         {
+            // only show registration link if no admin yet exists
+            // otherwise new users registered by admin from users panel
             return _db.Profiles.Find(p => p.IsAdmin).ToList().Count == 0;
+        }
+
+        // SendGrid account must be added to configuration settings
+        bool EmailServiceEnabled()
+        {
+            var section = _config.GetSection("Blogifier");
+            if (section == null)
+                return false;
+
+            var from = section.GetValue<string>("SendGridEmail");
+            var apiKey = section.GetValue<string>("SendGridApiKey");
+
+            return !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(apiKey);
         }
 
         #endregion

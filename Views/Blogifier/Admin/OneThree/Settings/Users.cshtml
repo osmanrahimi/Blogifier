@@ -3,7 +3,7 @@
     Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
     var searchTerm = Context.Request.Query["search"];
 
-    var emailEnabled = Model.RegisterModel.SendGridApiKey.Length > 0;
+    var showEmailNotification = ViewData["ShowSendEmailNotification"] != null && (bool)ViewData["ShowSendEmailNotification"];
 
     var reg = Model.RegisterModel;
     var pgr = Model.Pager;
@@ -97,7 +97,7 @@
                             </label>
                         </div>
                     </div>
-                    @if (emailEnabled)
+                    @if (showEmailNotification)
                     {
                         <div class="form-group">
                             <div class="checkbox">

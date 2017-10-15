@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Log in";
     bool showRegistration = ViewData["ShowRegistration"] != null && (bool)ViewData["ShowRegistration"];
+    bool showForgotPassword = ViewData["ShowFogotPassword"] != null && (bool)ViewData["ShowFogotPassword"];
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -33,9 +34,12 @@
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
             </div>
             <div class="form-group">
-                <p>
-                    <a asp-action="ForgotPassword">Forgot your password?</a>
-                </p>
+                @if (showForgotPassword)
+                {
+                    <p>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
+                }
                 @if (showRegistration)
                 {
                     <p>

@@ -289,3 +289,4 @@ __pycache__/
 
 # Blogifier specific
 Logs/
+Data/app.db

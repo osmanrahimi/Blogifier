@@ -7,6 +7,7 @@ using Blogifier.Core.Services.FileSystem;
 using Blogifier.Models;
 using Blogifier.Models.AccountViewModels;
 using Blogifier.Models.Admin;
+using Blogifier.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,18 +26,21 @@ namespace Blogifier.Controllers
         private readonly IUnitOfWork _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly string _theme;
 
         public AdminController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender,
             ILogger<AccountController> logger,
             IUnitOfWork db
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSender = emailSender;
             _logger = logger;
             _db = db;
             _theme = "~/Views/Blogifier/Admin/" + ApplicationSettings.AdminTheme + "/";
@@ -58,6 +62,8 @@ namespace Blogifier.Controllers
             model.Blogs = blogs;
             model.Pager = pager;
 
+            ViewData["ShowSendEmailNotification"] = _emailSender.EmailServiceEnabled();
+
             return View(_theme + "Settings/Users.cshtml", model);
         }
 
@@ -75,8 +81,6 @@ namespace Blogifier.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(string.Format("Created a new account for {0}", user.UserName));
-
-                    // await _signInManager.SignInAsync(user, isPersistent: false);
 
                     // create new profile
                     var profile = new Profile();
@@ -103,10 +107,13 @@ namespace Blogifier.Controllers
 
                     _logger.LogInformation(string.Format("Created a new profile at /{0}", profile.Slug));
 
+                    var subject = string.Format("Welcome to {0}", ApplicationSettings.Title);
+                    var userUrl = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, profile.Slug);
+                    var body = string.Format("<p>Thanks for joining!</p><p>Here is URL to your new blog: <a href=\"{0}\">{0}</a></p><p>Welcome and happy blogging!</p>", userUrl);
+
                     if (model.RegisterModel.SendEmailNotification)
                     {
-                        //await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
-                        _logger.LogWarning("EMAIL TEST: sending notification to : " + model.RegisterModel.Email);
+                        await _emailSender.SendEmailAsync(model.RegisterModel.Email, subject, body);
                     }
 
                     return RedirectToLocal(returnUrl);
