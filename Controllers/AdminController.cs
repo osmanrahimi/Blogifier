@@ -107,13 +107,10 @@ namespace Blogifier.Controllers
 
                     _logger.LogInformation(string.Format("Created a new profile at /{0}", profile.Slug));
 
-                    var subject = string.Format("Welcome to {0}", ApplicationSettings.Title);
-                    var userUrl = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, profile.Slug);
-                    var body = string.Format("<p>Thanks for joining!</p><p>Here is URL to your new blog: <a href=\"{0}\">{0}</a></p><p>Welcome and happy blogging!</p>", userUrl);
-
                     if (model.RegisterModel.SendEmailNotification)
                     {
-                        await _emailSender.SendEmailAsync(model.RegisterModel.Email, subject, body);
+                        var userUrl = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, profile.Slug);
+                        await _emailSender.SendEmailWelcomeAsync(model.RegisterModel.Email, model.RegisterModel.AuthorName, userUrl);
                     }
 
                     return RedirectToLocal(returnUrl);

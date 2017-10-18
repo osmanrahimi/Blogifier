@@ -152,7 +152,8 @@ namespace Blogifier.Controllers
 
                     if (model.SendEmailNotification)
                     {
-                        await _emailSender.SendEmailAsync(model.Email, "Test email", "This is just a test");
+                        var userUrl = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, profile.Slug);
+                        await _emailSender.SendEmailWelcomeAsync(model.Email, model.AuthorName, userUrl);
                     }
                     return RedirectToLocal(returnUrl);
                 }
