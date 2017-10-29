@@ -1,6 +1,8 @@
 @using Blogifier.Core.Extensions
 @using Blogifier.Core.Common
 @using Blogifier.Core.Data.Domain;
+@using Blogifier.Services;
+@inject IConfigService config
 @{
     var settingsView = Context.Request.Path.ToString().Contains("/admin/settings", StringComparison.InvariantCultureIgnoreCase);
     var editorView = Context.Request.Path.ToString().Contains("/admin/editor", StringComparison.InvariantCultureIgnoreCase);
@@ -34,6 +36,7 @@
             showUsers = true;
         }
     }
+    bool demo = config.GetSetting("Demo") == "true" && !Model.Profile.IsAdmin;
 }
 <ul class="bf-sidebar-nav">
     <li class="nav-item">
@@ -113,6 +116,9 @@
 		</ul>
 		}
 	</li>
-	<li class="nav-item"><a class="nav-item-link" href="~/account/changepassword"><i class="fa fa-key"></i>Change password</a></li>
+    @if (!demo)
+    {
+        <li class="nav-item"><a class="nav-item-link" href="~/account/changepassword"><i class="fa fa-key"></i>Change password</a></li>
+    }
     <li class="nav-item"><a class="nav-item-link" href="#" onclick="profileLogOut(); return false;"><i class="fa fa-sign-out"></i>Logoff</a></li>
 </ul>

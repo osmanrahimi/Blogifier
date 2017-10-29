@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-Blogifier-EA4B51A7-D733-485C-8744-60123A83CBBD</UserSecretsId>
+    <Version>1.3.0</Version>
+    <Description>Blogifier is simple, multi-user and cross-platform blogging application running on ASP.NET Core framework.</Description>
+    <RepositoryUrl>https://github.com/blogifierdotnet/Blogifier</RepositoryUrl>
+    <PackageProjectUrl>http://blogifier.net</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/blogifierdotnet/Blogifier/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>© BLOGIFIER</Copyright>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/19671571?v=4&amp;amp;s=180</PackageIconUrl>
+    <PackageTags>blog, blogging, blogifier, blogifier.net, blogifierdotnet</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />

@@ -41,6 +41,7 @@ namespace Blogifier
                 loggingBuilder.AddSerilog(dispose: true));
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IConfigService, ConfigService>();
 
             services.AddMvc();
 
