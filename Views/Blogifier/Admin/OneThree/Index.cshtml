@@ -18,10 +18,10 @@
 <div class="bf-posts-toolbar">
     <label class="custom-control custom-checkbox float-left"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
     <div class="loading loading-sm float-left mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
-    <div class="btn-group float-left" id="postsMultiactions">
-        <button type="button" class="btn btn-outline-secondary btn-sm btn-icon" data-toggle="tooltip" onclick="return postsController.removePost()" title="Delete"><i class="fa fa-trash"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-sm btn-icon" data-toggle="tooltip" onclick="return postsController.unpublish()" title="Unpublish"><i class="fa fa-archive"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-sm btn-icon" data-toggle="tooltip" onclick="return postsController.publish()" title="Publish"><i class="fa fa-check"></i></button>
+    <div class="btn-group float-left">
+        <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" onclick="return postsController.removePost()" title="Delete"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" onclick="return postsController.unpublish()" title="Unpublish"><i class="fa fa-archive"></i></button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" onclick="return postsController.publish()" title="Publish"><i class="fa fa-check"></i></button>
     </div>
 </div>
 <ul class="bf-posts-list" aria-label="posts">
@@ -80,8 +80,6 @@
 }
 @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_FileManager.cshtml")
 @section Scripts{
-    <script src="~/blogifier/admin/onethree/js/lib/scrollbar.min.js"></script>
-
     <script src="~/blogifier/admin/onethree/js/app/postsController.js"></script>
     <script>
         var submitFilter = function () {

@@ -136,13 +136,3 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
 $('.bf-posts-list').on('change', itemCheck, function () {
     toggleActionBtns();
 });
-
-function toggleActionBtns() {
-    if ($(itemCheck).is(':checked')) {
-        $(btnAction).show();
-    } else {
-        $(btnAction).hide();
-    }
-}
-
-$(btnAction).hide();

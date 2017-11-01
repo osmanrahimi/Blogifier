@@ -15,7 +15,6 @@
 // Base
 @import "base/reset";
 @import "base/main";
-@import "base/sidebar";
 
 // Components
 @import "components/utilities";
@@ -31,10 +30,8 @@
 @import "components/tinymce";
 
 // pages > posts
-@import "pages/posts/layout";
 @import "pages/posts/sidebar";
 @import "pages/posts/list";
-@import "pages/posts/empty";
 
 // pages > editor
 @import "pages/editor/tinymce";

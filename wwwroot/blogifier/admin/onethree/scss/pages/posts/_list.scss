@@ -26,12 +26,6 @@
     }
 }
 
-.bf-posts-search {
-    margin-bottom:1rem;
-    .form-control {
-        border-radius: 4rem;
-    }
-}
 
 .bf-posts-list {
     @include unstyled(ul);
