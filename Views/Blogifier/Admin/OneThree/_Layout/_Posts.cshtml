@@ -5,8 +5,14 @@
 <body>
     <div class="bf">
         @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
-        <div class="bf-body">
-            @RenderBody()
+        <div class="bf-body row no-gutters">
+            <div class="bf-sidebar col-lg-3 col-xl-2 p-3 bg-light">
+                @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_PostsFilters.cshtml")
+            </div>
+
+            <div class="bf-content col-lg-9 col-xl-10">
+                @RenderBody()
+            </div>
         </div>
     </div>
     @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Foot.cshtml")
