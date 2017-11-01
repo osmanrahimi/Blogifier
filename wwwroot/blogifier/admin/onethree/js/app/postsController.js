@@ -122,7 +122,6 @@ var sidebarTools = '#sidebarTools';
 // check all
 $(firstItemCheck).on('change', function () {
     $(itemCheck).prop('checked', this.checked);
-    toggleActionBtns();
 });
 
 // uncheck "check all" when one item is unchecked
@@ -132,7 +131,3 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
     }
 });
 
-// show multi action buttons when any item checked
-$('.bf-posts-list').on('change', itemCheck, function () {
-    toggleActionBtns();
-});
