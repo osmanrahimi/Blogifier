@@ -1,5 +1,5 @@
 .bf-settings {
-    padding: 5.5rem 3rem 2rem;
+    padding: 2rem 2.5rem;
     max-width: 48rem;
     width: 100%;
 
@@ -12,6 +12,7 @@
     }
 
     .form-group {
+        margin-bottom:2rem;
         > label {
             margin-bottom: .25rem;
             font-weight: $fw-medium;

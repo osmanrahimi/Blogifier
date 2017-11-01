@@ -6,8 +6,8 @@
     <div class="bf">
         @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
         <div class="bf-body row no-gutters">
-            <div class="bf-sidebar col-lg-3 col-xl-2 p-3 bg-light">
-                <ul>
+            <div class="bf-sidebar col-lg-3 col-xl-2">
+                <ul class="bf-sidebar-settings">
                     <li><a href="~/admin/settings/profile">Edit Profile</a></li>
                     @if (ApplicationSettings.SingleBlog == false)
                     {
