@@ -1,6 +1,6 @@
 ﻿@model Blogifier.Core.Data.Models.SettingsProfile
 @{
-    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
+    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Settings.cshtml";
     if (!Model.CustomFields.ContainsKey("SendGridApiKey")) { Model.CustomFields.Add("SendGridApiKey", ""); }
     if (!Model.CustomFields.ContainsKey("Google")) { Model.CustomFields.Add("Google", ""); }
     if (!Model.CustomFields.ContainsKey("Twitter")) { Model.CustomFields.Add("Twitter", ""); }

@@ -1,0 +1,33 @@
+﻿@using Blogifier.Core.Common
+<!DOCTYPE html>
+<html lang="en">
+@Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Head.cshtml")
+<body>
+    <div class="bf">
+        @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
+        <div class="bf-body row no-gutters">
+            <div class="bf-sidebar col-lg-3 col-xl-2 p-3 bg-light">
+                <ul>
+                    <li><a href="~/admin/settings/profile">Edit Profile</a></li>
+                    @if (ApplicationSettings.SingleBlog == false)
+                    {
+                        <li><a href="~/admin/settings/personal">Blog Settings</a></li>
+                    }
+                    <li><a href="~/admin/settings/custom">Custom Code</a></li>
+                    <li><a href="~/admin/settings/import">Import Rss</a></li>
+                    @if (Model.Profile != null && Model.Profile.IsAdmin)
+                    {
+                        <li><a href="~/admin/settings/users">Users</a></li>
+                        <li><a href="~/admin/settings/about">About</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="bf-content col-lg-9 col-xl-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Foot.cshtml")
+    @RenderSection("Scripts", false)
+</body>
+</html>

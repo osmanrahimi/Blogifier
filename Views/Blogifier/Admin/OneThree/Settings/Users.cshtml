@@ -1,6 +1,6 @@
 ﻿@model Blogifier.Models.Admin.UsersViewModel
 @{
-    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Layout.cshtml";
+    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Settings.cshtml";
     var searchTerm = Context.Request.Query["search"];
 
     var showEmailNotification = ViewData["ShowSendEmailNotification"] != null && (bool)ViewData["ShowSendEmailNotification"];
