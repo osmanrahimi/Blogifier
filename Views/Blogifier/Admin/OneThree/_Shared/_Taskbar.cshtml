@@ -1,3 +1,4 @@
+@using Blogifier.Core.Common
 <ul class="bf-taskbar d-flex flex-column">
     <li class="taskbar-item">
         <a class="taskbar-item-link" href="~/admin/editor/0" title="Write New Post"><i class="taskbar-item-icon fa fa-plus"></i></a>
@@ -8,7 +9,12 @@
     <li class="taskbar-item">
         <a class="taskbar-item-link" href="~/admin/settings/profile/" title="Settings"><i class="taskbar-item-icon fa fa-gear"></i></a>
     </li>
-    <li class="taskbar-item mt-auto">
-        <button class="taskbar-item-link" type="button"><i class="taskbar-item-icon fa fa-user"></i></button>
+    <li class="taskbar-item mt-auto dropdown">
+        <button class="taskbar-item-link" type="button" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="taskbar-item-icon fa fa-user"></i></button>
+        <div class="dropdown-menu" aria-labelledby="userMenu">
+            <a target="_blank" class="dropdown-item" href="~/">View blog</a>
+            <a target="_blank" class="dropdown-item" href="~/account/ChangePassword">Change password</a>
+            <a target="_blank" class="dropdown-item" href="#" onclick="profileLogOut(); return false;">Sign out</a>
+        </div>
     </li>
 </ul>
