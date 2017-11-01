@@ -47,6 +47,12 @@ $(".bf-setup-form #AuthorName").keyup(function () {
 
 // tooltips
 $(function () {
+    $(".bf-taskbar .taskbar-item-link").tooltip({
+        placement: 'right',
+        container: 'body'
+    });
+});
+$(function () {
     $("#postsMultiactions button").tooltip({
         placement: 'bottom',
         container: 'body'
