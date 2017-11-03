@@ -1,71 +1,77 @@
-html, body {
-    height: 100%;
+body,
+html {
+  height: 100%;
 }
 
 body {
-    font-family: $font-family-base;
-    cursor: default;
-
-    @media screen and (min-width:75rem) {
-        overflow-y: scroll;
-    }
+  font-family: $font-family-base;
+  cursor: default;
+  @media screen and (min-width:75rem) {
+    overflow-y: scroll;
+  }
 }
-
 //
+
 .bf {
-    position: relative;
+  position: relative;
+  height: 100%;
+  @media screen and (min-width: 991px) {
     padding-left: $width-taskbar;
-    height: 100%;
+  }
 }
 
 .bf-body {
+  @media screen and (min-width: 991px) {
     min-height: 100%;
+  }
 }
 
 .bf-taskbar {
-    @include unstyled(ul);
-    background-color: $cl-bf;
+  @include unstyled(ul);
+  background-color: $cl-bf;
+  color: #fff;
+  z-index: 1000;
+  @media screen and (min-width: 991px) {
     width: $width-taskbar;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+  }
+  @media screen and (max-width: 991px) {}
+
+  .taskbar-item {
+    height: $width-taskbar;
+    width: $width-taskbar;
+    opacity: 0.5;
+    transition: opacity ease-in 0.1s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .taskbar-item-link {
+    display: block;
+    height: 100%;
     color: #fff;
-    z-index: 1000;
+    width: 100%;
+    border: 0;
+    background: 0;
+    cursor: pointer;
+    outline: none;
+  }
 
-    .taskbar-item {
-        height: $width-taskbar;
-        width: $width-taskbar;
-        opacity: 0.5;
-        transition: opacity ease-in .1s;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    .taskbar-item-link {
-        display: block;
-        height: 100%;
-        color: #fff;
-        width: 100%;
-        border: 0;
-        background: 0;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .taskbar-item-icon {
-        display: block;
-        height: 100%;
-        text-align: center;
-        line-height: $width-taskbar;
-        font-size: 1.1875rem;
-    }
+  .taskbar-item-icon {
+    display: block;
+    height: 100%;
+    text-align: center;
+    line-height: $width-taskbar;
+    font-size: 1.1875rem;
+  }
 }
 
-
 .bf-sidebar {
-    padding: 2rem !important;
-    background-color: #f2f2f2;
+  padding: 2rem !important;
+  background-color: #f2f2f2;
 }
