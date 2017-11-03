@@ -1,1 +1,15 @@
-﻿
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  padding: 0.4375rem 1rem;
+
+  &-sm {
+    padding: 0.28125rem 0.75rem;
+  }
+
+  &-lg {
+    padding: 0.5rem 1rem;
+  }
+}
