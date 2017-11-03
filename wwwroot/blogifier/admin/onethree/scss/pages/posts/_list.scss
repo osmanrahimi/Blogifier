@@ -16,7 +16,7 @@
       transform: translate(-50%, -50%);
     }
   }
-  @media screen and (max-width:55rem) {
+  @media screen and (max-width:991px) {
     padding: 1rem 1rem 1rem 0;
 
     .custom-control {
@@ -206,7 +206,7 @@
       display: none;
     }
   }
-  @media screen and (max-width:55rem) {
+  @media screen and (max-width:991px) {
     .item-info,
     .item-link,
     .item-search a,
@@ -280,7 +280,7 @@
       }
     }
   }
-  @media screen and (max-width:55rem) {
+  @media screen and (max-width:991px) {
     .item,
     .item-link i {
       height: 3rem;

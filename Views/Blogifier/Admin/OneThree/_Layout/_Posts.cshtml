@@ -3,19 +3,24 @@
 <html lang="en">
 @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Head.cshtml")
 <body>
-    <div class="bf">
-        @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
-        <div class="bf-body row no-gutters">
-            <div class="bf-sidebar col-lg-3 col-xl-2">
-                @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_PostsFilters.cshtml")
-            </div>
-
-            <div class="bf-content col-lg-9 col-xl-10">
-                @RenderBody()
-            </div>
-        </div>
+  <div class="bf">
+    @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
+    <div class="bf-header d-flex d-lg-none">
+      <div class="bf-header-title my-auto">Posts</div>
+      <button class="bf-sidebar-toggle ml-auto btn btn-outline-secondary btn-sm"><i class="fa fa-sliders"></i> Filters</button>
     </div>
-    @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Foot.cshtml")
-    @RenderSection("Scripts", false)
+    <div class="bf-body row no-gutters">
+      <div class="bf-sidebar col-lg-3 col-xl-2 d-lg-block">
+        <div class="bf-sidebar-inner">
+          @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_PostsFilters.cshtml")
+        </div>
+      </div>
+      <div class="bf-content col-lg-9 col-xl-10">
+        @RenderBody()
+      </div>
+    </div>
+  </div>
+  @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Foot.cshtml")
+  @RenderSection("Scripts", false)
 </body>
 </html>

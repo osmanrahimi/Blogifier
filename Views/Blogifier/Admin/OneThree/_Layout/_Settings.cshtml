@@ -5,8 +5,12 @@
 <body>
     <div class="bf">
         @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_Taskbar.cshtml")
+        <div class="bf-header d-flex d-lg-none">
+          <div class="bf-header-title my-auto">Settings / <span></span></div>
+          <button class="bf-sidebar-toggle ml-auto btn btn-outline-secondary btn-sm"><i class="fa fa-navicon"></i> Menu</button>
+        </div>
         <div class="bf-body row no-gutters">
-            <div class="bf-sidebar col-lg-3 col-xl-2">
+            <div class="bf-sidebar col-lg-3 col-xl-2 d-lg-block">
                 <ul class="bf-sidebar-settings">
                     <li><a href="~/admin/settings/profile">Edit Profile</a></li>
                     @if (ApplicationSettings.SingleBlog == false)

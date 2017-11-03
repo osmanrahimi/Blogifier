@@ -20,6 +20,17 @@ body {
   }
 }
 
+.bf-header {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem;
+
+  &-title {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
 .bf-body {
   @media screen and (min-width: 991px) {
     min-height: 100%;
@@ -72,6 +83,15 @@ body {
 }
 
 .bf-sidebar {
-  padding: 2rem !important;
   background-color: #f2f2f2;
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+
+  &-inner {
+    padding: 2rem;
+    @media screen and (max-width: 991px) {
+      padding:2rem 1rem;
+    }
+  }
 }
