@@ -160,6 +160,8 @@
                 btn += '<li><a class="dropdown-item" href="#" onclick="editorController.savePost(); return false;">Save</a></li>';
                 btn += '<li><a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a></li>';
                 btn += '</ul></div>';
+                btn += '<a href="' + webRoot + blogRoute + postSlug + '" target="_blank" class="btn btn-outline-secondary btn-rounded ml-2" aria-label="View post" title="View" data-placement="bottom">View</a>';
+
             }
             else {
                 // published
@@ -170,7 +172,7 @@
                 btn += '<li><a class="dropdown-item" href="#" onclick="editorController.unpublishPost(); return false;">Unpublish</a></li>';
                 btn += '<li><a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a></li>';
                 btn += '</ul></div>';
-                btn += '<a href="' + webRoot + blogRoute + postSlug + '" target="_blank" class="btn btn-outline-primary btn-rounded ml-2" aria-label="View post" title="View" data-placement="bottom">View</a>';
+                btn += '<a href="' + webRoot + blogRoute + postSlug + '" target="_blank" class="btn btn-outline-secondary btn-rounded ml-2" aria-label="View post" title="View" data-placement="bottom">View</a>';
             }
         }
         $('#action-buttons').append(btn);
