@@ -6,7 +6,7 @@ html {
 body {
   font-family: $font-family-base;
   cursor: default;
-  @media screen and (min-width:75rem) {
+  @media screen and (min-width: 75rem) {
     overflow-y: scroll;
   }
 }
@@ -54,8 +54,8 @@ body {
   .taskbar-item {
     height: $width-taskbar;
     width: $width-taskbar;
-    opacity: 0.5;
-    transition: opacity ease-in 0.1s;
+    opacity: .5;
+    transition: opacity ease-in .1s;
 
     &:hover {
       opacity: 1;
@@ -91,7 +91,7 @@ body {
   &-inner {
     padding: 2rem;
     @media screen and (max-width: 991px) {
-      padding:2rem 1rem;
+      padding: 2rem 1rem;
     }
   }
 }

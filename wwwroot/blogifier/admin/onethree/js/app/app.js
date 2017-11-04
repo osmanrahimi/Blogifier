@@ -122,6 +122,8 @@ $(".bf-sidebar-toggle").on("click", function() {
   $(".bf-sidebar").stop(true, true).slideToggle();
 });
 
-
 //
 $(".bf-header-title span").text($(".bf-settings").data("page-title"));
+
+// Tooltips
+$("[data-tooltip]").tooltip();

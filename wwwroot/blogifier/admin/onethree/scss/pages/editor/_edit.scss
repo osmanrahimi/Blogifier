@@ -5,8 +5,8 @@
     max-width: 60rem;
   }
 }
-
 //
+
 .bf-editor-header {
   padding-top: 4rem + 3.5rem; // plus toolbar
   padding-bottom: 4rem;
@@ -31,18 +31,69 @@
     position: relative;
     z-index: 1;
   }
+}
 
-  .bf-editor-title{
-    width: 100%;
-    display: block;
-    font-size: 1.5rem;
-    border:none;
+.bf-editor-title {
+  width: 100%;
+  display: block;
+  font-size: 1.5rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #fff;
+  outline: none !important;
+}
+
+.bf-editor-category {
+  padding: 0;
+
+  form {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  ul {
+    @include unstyled(ul)
+  }
+
+  li {
+    border-bottom: 1px solid #eee;
+    position: relative;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+
+  .custom-control {
     margin: 0;
-    padding: 0;
-    background: none;
-    color:#fff;
+    padding: .5rem 3rem;
+    cursor: pointer;
+    display: block;
 
-    outline: none !important;
+    .custom-control-indicator {
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1rem;
+    }
+  }
+
+  .fa {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
+    text-align: center;
+    line-height: 2.5rem;
+    color: #aaa;
+
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
   }
 }
 
@@ -52,5 +103,5 @@
   right: 0;
   left: 0;
   padding: .5rem 2rem;
-  background-color:rgba(#000000, 0.5);
+  background-color: rgba(#000000, 0.5);
 }
