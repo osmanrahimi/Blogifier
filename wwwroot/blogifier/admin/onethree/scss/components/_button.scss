@@ -2,15 +2,23 @@
   text-transform: uppercase;
   font-size: .875rem;
   font-weight: 500;
-  padding: .53125rem 1rem;
+  padding: 0 1.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  display: inline-block;
+  cursor: pointer;
 
   &-sm {
     font-size: .75rem;
-    padding: .375rem .75rem;
+    padding: 0 1rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
   }
 
   &-lg {
-    padding: .78125rem 1rem;
+    padding: 0 1.25rem;
+    height: 3rem;
+    line-height: 3rem;
   }
 
   &-unstyled {
@@ -20,6 +28,21 @@
 
   &-rounded {
     border-radius: 5rem;
+  }
+
+  & + .dropdown-toggle-split {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+    border-left: 1px solid rgba(#000000, .2);
+
+    &::after {
+      position: relative;
+    }
+  }
+
+  .fa {
+    font-size: .875rem;
   }
 }
 // BTN PRIMARY
