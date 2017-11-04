@@ -29,20 +29,10 @@ body {
 
 .mce-content-body {
     height: 100%;
-    padding: 3rem 3rem 1rem !important;
+    padding: 2rem 0 !important;
 }
 
-@media screen and (max-width:880px) {
-    .mce-content-body {
-        padding: 2rem !important;
-    }
-}
 
-@media screen and (max-width:30rem) {
-    .mce-content-body {
-        padding: 1rem !important;
-    }
-}
 
 
 img, video {
