@@ -1,4 +1,5 @@
 ﻿using Blogifier.Data;
+using Blogifier.Middleware;
 using Blogifier.Models;
 using Blogifier.Services;
 using Microsoft.AspNetCore.Builder;
@@ -63,6 +64,8 @@ namespace Blogifier
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseETagger();
 
             app.UseMvc(routes =>
             {
