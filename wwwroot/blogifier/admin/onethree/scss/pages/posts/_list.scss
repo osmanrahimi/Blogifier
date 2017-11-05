@@ -1,7 +1,7 @@
 .bf-posts-toolbar {
   @include clearfix;
   padding: 2rem 2rem 2rem 0;
-  border-bottom: 1px solid $cl-black-5;
+  border-bottom: 1px solid #fafafa;
 
   .custom-control {
     margin: 0;
@@ -29,7 +29,7 @@
   @include unstyled(ul);
 
   .item {
-    border-bottom: 1px solid $cl-black-5;
+    border-bottom: 1px solid #fafafa;
     position: relative;
 
     &:hover {

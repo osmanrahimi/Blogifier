@@ -29,9 +29,9 @@
     }
   }
   @media screen and (max-width:75rem) {
-    .mce-toolbar-grp {
-      left: $width-sidebar-sm;
-    }
+    // .mce-toolbar-grp {
+    //   left: $width-sidebar-sm;
+    // }
   }
   // @media screen and (max-width:55rem) {
   //   padding: 0;
@@ -203,5 +203,4 @@
   transform: translateX(-50%);
   font-size: 1.25rem;
   color: #aaa;
-  font-weight: $fw-light;
 }

@@ -91,7 +91,7 @@
     thead {
       th {
         border-top: 0;
-        font-weight: $fw-medium;
+        font-weight: 500;
       }
     }
   }
@@ -111,7 +111,7 @@
         border: none !important;
 
         &:first-child {
-          font-weight: $fw-medium;
+          font-weight: 500;
         }
       }
     }

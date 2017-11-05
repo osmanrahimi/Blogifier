@@ -5,7 +5,6 @@
     overflow-y: auto;
     // form
     &-header {
-        font-weight: $fw-thin;
         text-align: center;
         margin-bottom: 3rem;
     }
@@ -42,15 +41,13 @@
 
     .form-control {
         color: #fff;
-        border-color: $cl-black-25;
-        font-weight: $fw-light;
-
+        border-color: rgba(#000000, .25);
         &:focus {
-            border-color: $cl-black-40;
+            border-color: rgba(#000000, .40);
         }
 
         &::placeholder {
-            color: $cl-white-30;
+            color: rgba(#ffffff, .30);
         }
     }
     // logo

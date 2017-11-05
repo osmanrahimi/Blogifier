@@ -7,14 +7,16 @@
 // Helpers
 @import "helpers/variables";
 @import "helpers/mixins";
+@import "helpers/reset";
 
-// Vendor
-@import "vendor/fontawesome";
-@import "vendor/toastr";
-
-// Base
-@import "base/reset";
-@import "base/main";
+// Layouts
+@import "layouts/main";
+@import "layouts/bf";
+@import "layouts/body";
+@import "layouts/content";
+@import "layouts/header";
+@import "layouts/sidebar";
+@import "layouts/taskbar";
 
 // Components
 @import "components/utilities";
@@ -28,6 +30,7 @@
 @import "components/scrollbar";
 @import "components/prism";
 @import "components/tinymce";
+@import "components/toastr";
 
 // pages > posts
 @import "pages/posts/sidebar";
