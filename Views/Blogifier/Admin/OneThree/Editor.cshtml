@@ -15,13 +15,11 @@
       </div>
       <!--/Editor Header -->
       <!-- Editor -->
-      <div class="container">
-        <textarea id="txtContent" name="txtContent" class="form-control form-control-text" placeholder="Post Content...">@Model.BlogPost.Content</textarea>
-        <input type="hidden" id="hdnPostId" name="hdnPostId" value="@Model.BlogPost.Id" />
-        <input type="hidden" id="hdnPostSlug" name="hdnPostSlug" value="@Model.BlogPost.Slug" />
-        <input type="hidden" id="hdnPostImg" name="hdnPostImg" value="@Model.BlogPost.Image" />
-        <input type="hidden" id="hdnPublished" name="hdnPublished" value="@Model.BlogPost.Published" />
-      </div>
+      <textarea id="txtContent" name="txtContent" class="form-control form-control-text" placeholder="Post Content...">@Model.BlogPost.Content</textarea>
+      <input type="hidden" id="hdnPostId" name="hdnPostId" value="@Model.BlogPost.Id" />
+      <input type="hidden" id="hdnPostSlug" name="hdnPostSlug" value="@Model.BlogPost.Slug" />
+      <input type="hidden" id="hdnPostImg" name="hdnPostImg" value="@Model.BlogPost.Image" />
+      <input type="hidden" id="hdnPublished" name="hdnPublished" value="@Model.BlogPost.Published" />
       <!--/Editor -->
     </form>
 

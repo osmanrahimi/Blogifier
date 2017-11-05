@@ -1,8 +1,6 @@
 .mce-tinymce {
   border: none !important;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  background: none !important;
 
   .mce-toolbar-grp {
     // position: absolute;
@@ -15,8 +13,14 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    border-bottom: 1px solid #eee;
 
-    > div {}
+    > div {
+      height: 100%;
+      max-width: 60rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
 
     * {
       padding: 0;
@@ -180,29 +184,21 @@
 
 .mce-heading-5 {
   .mce-text {
-    font-size: 0.875rem !important;
+    font-size: .875rem !important;
   }
 }
 
 .mce-heading-6 {
   .mce-text {
-    font-size: 0.75rem !important;
+    font-size: .75rem !important;
   }
 }
 
 .tinymce-placeholder {
   position: absolute;
   top: 2.125rem;
-  left: 0;
+  left: 1rem;
   font-size: 1.25rem;
   color: #aaa;
   font-weight: $fw-light;
-  @media screen and (max-width:71rem) {
-    top: 2.25rem;
-    left: 2rem;
-  }
-  @media screen and (max-width:30rem) {
-    top: 1.25rem;
-    left: 1rem;
-  }
 }
