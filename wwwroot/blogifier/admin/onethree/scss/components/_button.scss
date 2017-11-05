@@ -66,12 +66,12 @@
   .show > &.dropdown-toggle {
     background-color: darken($cl-bf, 7);
     border-color: darken($cl-bf, 7);
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.3);
+    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
   }
 
   &.focus,
   &:focus {
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.3);
+    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
   }
 }
 // BTN OUTLINE PRIMARY
@@ -87,7 +87,7 @@
 
   &.focus,
   &:focus {
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.3);
+    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
   }
 
   &:not([disabled]):not(.disabled).active,
@@ -95,6 +95,6 @@
   .show > &.dropdown-toggle {
     background-color: darken($cl-bf, 7);
     border-color: darken($cl-bf, 7);
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.3);
+    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
   }
 }
