@@ -21,13 +21,18 @@
     line-height: 3rem;
   }
 
+  &-rounded {
+    border-radius: 5rem;
+  }
+
   &-unstyled {
     border: 0;
     background: none;
   }
 
-  &-rounded {
-    border-radius: 5rem;
+  &-icon {
+    padding: 0;
+    width: 3rem;
   }
 
   & + .dropdown-toggle-split {

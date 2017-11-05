@@ -8,7 +8,7 @@
 //
 
 .bf-editor-header {
-  padding-top: 4rem + 3.5rem; // plus toolbar
+  padding-top: 4rem + 4rem; // plus toolbar
   padding-bottom: 4rem;
   background-position: center;
   background-repeat: no-repeat;
@@ -102,13 +102,18 @@
   top: 0;
   right: 0;
   left: 0;
-  padding: .5rem 2rem;
+  padding: 1rem 2rem;
   background-color: rgba(#000000, 0.5);
-
   @media screen and (max-width: 991px) {
     padding: .5rem;
+
     .container {
       padding: 0;
     }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    min-width: 0;
   }
 }

@@ -3,13 +3,25 @@
 }
 
 .form-control {
-  padding: 0.4375rem 1rem;
+  padding: 0 1rem;
+  height: 2.5rem;
+
+  &-rounded {
+    border-radius: 5rem;
+  }
 
   &-sm {
-    padding: 0.28125rem 0.75rem;
+    padding: 0 .75rem;
+    height: 2.25rem;
   }
 
   &-lg {
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
+    height: 3rem;
   }
+}
+
+textarea.form-control {
+  height: auto;
+  padding: 1rem;
 }
