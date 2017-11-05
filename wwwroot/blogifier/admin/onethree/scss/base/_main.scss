@@ -15,7 +15,7 @@ body {
 .bf {
   position: relative;
   height: 100%;
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: 992px) {
     padding-left: $width-taskbar;
   }
 }
@@ -23,42 +23,33 @@ body {
 .bf-header {
   background-color: #f2f2f2;
   border-bottom: 1px solid #e5e5e5;
+  line-height: 3rem;
   height: 3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-left: 1rem;
+  position: relative;
 
-  &-title {
-    text-transform: uppercase;
-    font-weight: 500;
-    padding-left: 1rem;
+  .fa {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform ease-out .25s;
   }
 
-  &-toggle {
-    color: #aaa;
-
-    &.active,
-    &:focus,
-    &:hover {
-      color: #000;
-    }
-
-    .fa {
-      transition: transform ease-out .25s;
-    }
-
-    &.active {
-      .fa-chevron-down {
-        transform: rotateX(180deg);
-      }
-
-      .fa-sliders {
-        transform: rotateY(180deg);
-      }
-    }
+  span {
+    padding-left: .25rem;
   }
-}
 
-.bf-body {
-  @media screen and (min-width: 991px) {
-    min-height: 100%;
+  &.active {
+    .fa-chevron-down {
+      transform: translateY(-50%) rotateX(180deg);
+    }
+
+    .fa-sliders {
+      transform: translateY(-50%) rotateY(180deg);
+    }
   }
 }
 
@@ -99,12 +90,13 @@ body {
     top: 50%;
     transform: translate(-50%,-50%);
   }
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: 992px) {
     width: $width-taskbar;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    overflow-y: auto;
 
     .taskbar-item {
       height: $width-taskbar;
@@ -121,8 +113,25 @@ body {
   }
 }
 
+.bf-body {
+  position: relative;
+  @media screen and (min-width: 992px) {
+    min-height: 100%;
+    padding-left: $width-sidebar;
+  }
+}
+
 .bf-sidebar {
   background-color: #f2f2f2;
+  @media screen and (min-width: 992px) {
+    min-height: 100%;
+    width: $width-sidebar;
+    position: fixed;
+    left: $width-taskbar;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+  }
   @media screen and (max-width: 991px) {
     display: none;
   }
@@ -133,4 +142,8 @@ body {
       padding: 2rem 1rem;
     }
   }
+}
+
+.bf-content {
+  width: 100%;
 }

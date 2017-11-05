@@ -116,13 +116,14 @@ $('.bf-sidebar-settings li a[href*="' + location.pathname + '"]').addClass('acti
 
 
 // sidebar toggle mobile
-$(".bf-header-toggle").on("click", function() {
+$(".bf-header").on("click", function() {
   $(this).toggleClass("active");
   $(".bf-sidebar").stop(true, true).slideToggle();
 });
 
 //
-$(".bf-header-title span").text($(".bf-settings").data("page-title"));
+var settingPageTitle = $(".bf-settings").data("page-title");
+$(".bf-header span").text(settingPageTitle);
 
 // Tooltips
 $("[data-tooltip]").tooltip();
