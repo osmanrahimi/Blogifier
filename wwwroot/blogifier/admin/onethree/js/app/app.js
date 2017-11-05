@@ -116,7 +116,7 @@ $('.bf-sidebar-settings li a[href*="' + location.pathname + '"]').addClass('acti
 
 
 // sidebar toggle mobile
-$(".bf-sidebar-toggle").on("click", function() {
+$(".bf-header-toggle").on("click", function() {
   $(this).toggleClass("active");
   $(".bf-sidebar").stop(true, true).slideToggle();
 });
