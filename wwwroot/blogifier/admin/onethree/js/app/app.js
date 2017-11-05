@@ -101,7 +101,6 @@ document.body.appendChild(scrollDiv);
 var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 document.body.removeChild(scrollDiv);
 
-
 $('.modal').on('show.bs.modal', function() {
   $(".mce-toolbar-grp").css({
     "right": scrollbarWidth
@@ -127,3 +126,8 @@ $(".bf-header-title span").text($(".bf-settings").data("page-title"));
 
 // Tooltips
 $("[data-tooltip]").tooltip();
+
+
+$('.modal').on('shown.bs.modal', function () {
+  $(this).find('[autofocus]').trigger('focus')
+})

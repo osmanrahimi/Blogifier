@@ -10,7 +10,7 @@
       <!-- Editor Header -->
       <div class="bf-editor-header bf-editor-cover" style="background-image:url(@postCover);">
           <div class="container">
-            <textarea class="bf-editor-title" id="txtPostTitle" rows="1" placeholder="Post title..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">@Model.BlogPost.Title</textarea>
+            <textarea class="bf-editor-title" id="txtPostTitle" rows="1" placeholder="Post title..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>@Model.BlogPost.Title</textarea>
           </div>
       </div>
       <!--/Editor Header -->
@@ -50,7 +50,7 @@
       </div>
       <div class="modal-body bf-editor-category">
         <form id="frmCategory">
-            <input type="text" id="txtCategory" title="Type and Enter" autocomplete="off" onkeypress="editorController.categoryKeyPress(event)" class="form-control" placeholder="Category Name..." />
+            <input type="text" id="txtCategory" title="Type and Enter" autocomplete="off" onkeypress="editorController.categoryKeyPress(event)" class="form-control" placeholder="Category Name..." autofocus />
         </form>
         <ul id="edit-categories">
           @foreach (var category in Model.CategoryList)
@@ -86,7 +86,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
       </div>
       <div class="modal-body">
-        <textarea rows="6" id="txtDescription" class="form-control">@Model.BlogPost.Description</textarea>
+        <textarea rows="6" id="txtDescription" class="form-control" autofocus>@Model.BlogPost.Description</textarea>
       </div>
     </div>
   </div>

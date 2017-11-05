@@ -28,12 +28,10 @@ body {
 
 .mce-content-body {
   height: 100%;
-  padding: 2rem 0 !important;
+  padding: 2rem 1rem !important;
   max-width: 60rem;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
   box-sizing: border-box;
 }
 
