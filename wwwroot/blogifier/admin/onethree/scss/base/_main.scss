@@ -96,7 +96,8 @@ body {
     left: 0;
     top: 0;
     bottom: 0;
-    overflow-y: auto;
+    // overflow-y: auto;
+    // any overflow on this will hide any dropdown
 
     .taskbar-item {
       height: $width-taskbar;
