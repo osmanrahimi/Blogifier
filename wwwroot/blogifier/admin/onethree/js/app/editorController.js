@@ -229,6 +229,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
             class: "tinymce-placeholder",
             style: ""
         },
+        codesample_languages: [
+            {text: 'HTML/XML', value: 'markup'},
+            {text: 'JavaScript', value: 'javascript'},
+            {text: 'CSS', value: 'css'},
+            {text: 'SCSS', value: 'scss'},
+            {text: 'C', value: 'c'},
+            {text: 'C#', value: 'csharp'},
+            {text: 'C++', value: 'cpp'},
+            {text: 'SQL', value: 'sql'},
+            {text: 'PHP', value: 'php'},
+            {text: 'Ruby', value: 'ruby'},
+            {text: 'Python', value: 'python'},
+            {text: 'Java', value: 'java'}
+        ],
+        codesample_dialog_width: 460,
+        codesample_dialog_height: 460,
+        codesample_content_css: "/blogifier/admin/onethree/js/lib/tinymce/skins/blogifier/prism.css",
         setup: function (editor) {
             editor.addButton('heading', {
                 type: 'menubutton',
