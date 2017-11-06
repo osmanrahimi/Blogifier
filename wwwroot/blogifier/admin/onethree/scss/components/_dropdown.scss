@@ -6,5 +6,11 @@
 }
 
 .dropdown-item {
-  padding: .5rem 1rem;
+  padding: .375rem 1rem;
+  border-bottom: 1px solid #eee;
+  font-size: .875rem;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 }

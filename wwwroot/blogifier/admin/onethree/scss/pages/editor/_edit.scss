@@ -113,7 +113,7 @@
   top: 0;
   right: 0;
   left: 0;
-  padding: 1rem 2rem;
+  padding: .625rem 2rem;
   background-color: rgba(#fff, 0.1);
   @media screen and (max-width: 991px) {
     padding: .5rem;
@@ -131,13 +131,6 @@
     .loading-sm {
       padding: .75rem 0;
     }
-
-    #action-buttons {
-      .dropdown-toggle-split {
-        padding-right: .75rem;
-        padding-left: .75rem;
-      }
-    }
   }
 
   #action-buttons {
@@ -145,8 +138,12 @@
       width: 100%;
       min-width: 0;
     }
+
     .dropdown-item {
       font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: .5rem;
     }
   }
 }

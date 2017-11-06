@@ -146,9 +146,9 @@
             btn += '<div class="btn-group">';
             btn += '<button type="button" onclick="editorController.savePost(true); return false;" class="btn btn-sm btn-primary btn-rounded">Publish</button>';
             btn += '<button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>';
-            btn += '<ul class="dropdown-menu dropdown-menu-right">';
-            btn += '<li><a class="dropdown-item" href="#" onclick="editorController.savePost(); return false;">Save</a></li>';
-            btn += '</ul></div>';
+            btn += '<div class="dropdown-menu dropdown-menu-right">';
+            btn += '<a class="dropdown-item" href="#" onclick="editorController.savePost(); return false;">Save</a>';
+            btn += '</div></div>';
         }
         else {
             if (published.indexOf("0001") >= 0) {
@@ -156,10 +156,10 @@
                 btn += '<div class="btn-group">';
                 btn += '<button type="button" onclick="editorController.savePost(true); return false;" class="btn btn-sm btn-primary btn-rounded">Publish</button>';
                 btn += '<button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>';
-                btn += '<ul class="dropdown-menu dropdown-menu-right">';
-                btn += '<li><a class="dropdown-item" href="#" onclick="editorController.savePost(); return false;">Save</a></li>';
-                btn += '<li><a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a></li>';
-                btn += '</ul></div>';
+                btn += '<div class="dropdown-menu dropdown-menu-right">';
+                btn += '<a class="dropdown-item" href="#" onclick="editorController.savePost(); return false;">Save</a>';
+                btn += '<a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a>';
+                btn += '</div></div>';
                 btn += '<a href="' + webRoot + blogRoute + postSlug + '" target="_blank" class="btn btn-sm btn-outline-light btn-rounded ml-2" aria-label="View post" title="View" data-placement="bottom">View</a>';
 
             }
@@ -168,10 +168,10 @@
                 btn += '<div class="btn-group">';
                 btn += '<button type="button" onclick="editorController.savePost(); return false;" class="btn btn-sm btn-primary btn-rounded">Save</button>';
                 btn += '<button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split btn-rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>';
-                btn += '<ul class="dropdown-menu dropdown-menu-right">';
-                btn += '<li><a class="dropdown-item" href="#" onclick="editorController.unpublishPost(); return false;">Unpublish</a></li>';
-                btn += '<li><a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a></li>';
-                btn += '</ul></div>';
+                btn += '<div class="dropdown-menu dropdown-menu-right">';
+                btn += '<a class="dropdown-item" href="#" onclick="editorController.unpublishPost(); return false;">Unpublish</a>';
+                btn += '<a class="dropdown-item" href="#" onclick="editorController.deletePost(); return false;">Delete</a>';
+                btn += '</div></div>';
                 btn += '<a href="' + webRoot + blogRoute + postSlug + '" target="_blank" class="btn btn-sm btn-outline-light btn-rounded ml-2" aria-label="View post" title="View" data-placement="bottom">View</a>';
             }
         }
