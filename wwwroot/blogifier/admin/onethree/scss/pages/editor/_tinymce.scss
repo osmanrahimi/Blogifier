@@ -199,7 +199,9 @@
   top: 2.125rem;
   left: 50%;
   width: 100%;
-  max-width: 60rem - 2rem;
+  max-width: 60rem;
+  padding-left: 1rem;
+  box-sizing: border-box;
   transform: translateX(-50%);
   font-size: 1.25rem;
   color: #aaa;
