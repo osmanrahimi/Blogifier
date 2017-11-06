@@ -47,6 +47,10 @@
   background: none;
   color: #fff;
   outline: none !important;
+
+  &::placeholder {
+    color: #fff;
+  }
   @media screen and (max-width: 991px) {
     font-size: 1.125rem;
   }
@@ -110,10 +114,9 @@
   right: 0;
   left: 0;
   padding: 1rem 2rem;
-  background-color: rgba(#000000, 0.5);
+  background-color: rgba(#fff, 0.1);
   @media screen and (max-width: 991px) {
     padding: .5rem;
-    background-color: #111;
 
     .btn {
       height: 2rem;
@@ -134,11 +137,16 @@
         padding-right: .75rem;
         padding-left: .75rem;
       }
+    }
+  }
 
-      .dropdown-menu {
-        width: 100%;
-        min-width: 0;
-      }
+  #action-buttons {
+    .dropdown-menu {
+      width: 100%;
+      min-width: 0;
+    }
+    .dropdown-item {
+      font-size: .875rem;
     }
   }
 }
