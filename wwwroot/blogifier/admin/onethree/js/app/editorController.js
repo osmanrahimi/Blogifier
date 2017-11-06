@@ -245,7 +245,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         ],
         codesample_dialog_width: 460,
         codesample_dialog_height: 460,
-        codesample_content_css: "/blogifier/admin/onethree/js/lib/tinymce/skins/blogifier/prism.css",
         setup: function (editor) {
             editor.addButton('heading', {
                 type: 'menubutton',
