@@ -8,7 +8,7 @@
 
     <form id="frmEditor" class="bf-editor-form">
       <!-- Editor Header -->
-      <div class="bf-editor-header bf-editor-cover" style="background-image:url(@postCover);">
+      <div class="bf-editor-header" style="background-image:url(@postCover);">
           <div class="container">
             <textarea class="bf-editor-title" id="txtPostTitle" rows="1" placeholder="Post title..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>@Model.BlogPost.Title</textarea>
           </div>
@@ -135,25 +135,24 @@
             }
         }
         var updatePostCoverCallback = function (data) {
-            $('.bf-editor-cover').css('background-image', 'url(' + data.url + ')');
+            $('.bf-editor-header').css('background-image', 'url(' + data.url + ')');
             $('#hdnPostImg').val(data.url);
             toastr.success('Updated');
         }
 
-        $(window).on("load", function () {
-            var stickyNavTop = 57;
-            var stickyNav = function () {
-                var scrollTop = $(window).scrollTop();
-                if (scrollTop > stickyNavTop && $(window).width() <= 880) {
-                    $(".mce-tinymce").addClass('sticky');
-                } else {
-                    $(".mce-tinymce").removeClass('sticky');
-                }
-            };
+        var stickyNav = function () {
+          var editorHeader = $(".bf-editor-header").offset();
+          var stickyNavTop = (editorHeader.top + $(".bf-editor-header").outerHeight()) - 1;
+          var scrollTop = $(window).scrollTop();
+          if (scrollTop > stickyNavTop) {
+              $(".mce-tinymce").addClass('sticky');
+
+          } else {
+              $(".mce-tinymce").removeClass('sticky');
+          }
+        };
+        $(window).on("load resize scroll",function(e){
             stickyNav();
-            $(window).scroll(function () {
-                stickyNav();
-            });
         });
     </script>
 }

@@ -2,6 +2,23 @@
   border: none !important;
   background: none !important;
 
+  &.sticky {
+    .mce-toolbar-grp {
+      position: fixed;
+      top: 0;
+    }
+    @media screen and (min-width: 992px) {
+      padding-top: 3.0625rem;
+
+      .mce-toolbar-grp {
+        left: $width-taskbar;
+      }
+    }
+    @media screen and (max-width: 991px) {
+      padding-top: 4.0625rem;
+    }
+  }
+
   .mce-toolbar-grp {
     background: #fff;
     right: 0;
