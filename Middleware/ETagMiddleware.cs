@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Blogifier.Middleware
 {
+    /*
+    this code is from:
+    https://gist.github.com/madskristensen/36357b1df9ddbfd123162cd4201124c4 
+    */
     public class ETagMiddleware
     {
         private readonly RequestDelegate _next;
