@@ -31,6 +31,10 @@
     position: relative;
     z-index: 1;
   }
+  @media screen and (max-width: 991px) {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .bf-editor-title {
@@ -43,6 +47,9 @@
   background: none;
   color: #fff;
   outline: none !important;
+  @media screen and (max-width: 991px) {
+    font-size: 1.125rem;
+  }
 }
 
 .bf-editor-category {
@@ -106,14 +113,32 @@
   background-color: rgba(#000000, 0.5);
   @media screen and (max-width: 991px) {
     padding: .5rem;
+    background-color: #111;
+
+    .btn {
+      height: 2rem;
+      line-height: 2rem;
+      padding: 0 1rem;
+    }
 
     .container {
       padding: 0;
     }
-  }
 
-  .dropdown-menu {
-    width: 100%;
-    min-width: 0;
+    .loading-sm {
+      padding: .75rem 0;
+    }
+
+    #action-buttons {
+      .dropdown-toggle-split {
+        padding-right: .75rem;
+        padding-left: .75rem;
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        min-width: 0;
+      }
+    }
   }
 }

@@ -3,8 +3,6 @@
   background: none !important;
 
   .mce-toolbar-grp {
-    // position: absolute;
-    // top: 3.5rem;
     background: #fff;
     right: 0;
     left: 0;
@@ -28,28 +26,6 @@
       border: none;
     }
   }
-  @media screen and (max-width:75rem) {
-    // .mce-toolbar-grp {
-    //   left: $width-sidebar-sm;
-    // }
-  }
-  // @media screen and (max-width:55rem) {
-  //   padding: 0;
-  //
-  //   .mce-toolbar-grp {
-  //     position: absolute;
-  //     left: 0;
-  //     top: 0;
-  //     padding: 0;
-  //   }
-  //
-  //   &.sticky {
-  //     .mce-toolbar-grp {
-  //       position: fixed;
-  //       top: 0;
-  //     }
-  //   }
-  // }
 }
 
 #mceu_20-body {
@@ -61,16 +37,11 @@
     > div {
       @include clearfix;
     }
-    @media (min-width:(55rem + .0625rem)) {
+    @media (min-width:(992px)) {
       float: left;
       width: 50%;
       display: block;
       font-size: 0;
-    }
-    @media screen and (max-width:55rem) {
-      &.mce-first {
-        /*border-bottom: 1px solid rgba(0, 0, 0, 0.10);*/
-      }
     }
   }
 
@@ -97,7 +68,7 @@
     button {
       display: block;
       width: 100%;
-      height: 3.5rem;
+      height: 3rem;
       position: relative;
       color: #666;
     }
@@ -122,14 +93,9 @@
       line-height: 1.25rem;
       text-align: center;
     }
-    @media (max-width:55rem) {
+    @media (max-width:991px) {
       button {
-        height: 3rem;
-      }
-    }
-    @media (max-width:480px) {
-      button {
-        height: 2.5rem;
+        height: 2rem;
       }
     }
   }

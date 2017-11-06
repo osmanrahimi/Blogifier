@@ -27,13 +27,25 @@
     <div class="bf-editor-footer">
       <div class="container d-flex">
         <span id="action-buttons" class="mr-2"></span>
-        <a href="~/admin" class="btn btn-outline-secondary btn-rounded">Cancel</a>
+        <a href="~/admin" class="btn btn-outline-secondary btn-rounded d-none d-lg-block">Cancel</a>
         <div class="loading loading-sm ml-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
-        <div class="btn-group ml-auto">
+        <div class="btn-group ml-auto d-none d-lg-flex">
           <button class="btn btn-rounded btn-icon btn-outline-secondary" data-tooltip title="Cover" onclick="return fileManagerController.open(updatePostCoverCallback);"><i class="fa fa-photo"></i></button>
           <button class="btn btn-rounded btn-icon btn-outline-secondary" data-tooltip title="Category" data-toggle="modal" data-target="#postCategories"><i class="fa fa-folder-open"></i></button>
-          <button class="btn btn-rounded btn-icon btn-outline-secondary" data-tooltip title="Description" data-toggle="modal" data-target="#postDescription"><i class="fa fa-align-justify"></i></button>
+          <button class="btn btn-rounded btn-icon btn-outline-secondary" data-tooltip title="Description" data-toggle="modal" data-target="#postDescription"><i class="fa fa-file-text"></i></button>
         </div>
+        <!-- Mobile Menu -->
+        <div class="dropdown ml-auto d-block d-lg-none">
+          <button class="btn btn-rounded btn-icon btn-outline-secondary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-cog"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <button class="dropdown-item" onclick="return fileManagerController.open(updatePostCoverCallback);"><i class="fa fa-photo"></i> Cover</button>
+            <button class="dropdown-item" data-toggle="modal" data-target="#postCategories"><i class="fa fa-folder-open"></i> Category</button>
+            <button class="dropdown-item" data-toggle="modal" data-target="#postDescription"><i class="fa fa-file-text"></i> Description</button>
+          </div>
+        </div>
+        <!--/Mobile Menu -->
       </div>
     </div>
     <!--/Editor Footer -->
