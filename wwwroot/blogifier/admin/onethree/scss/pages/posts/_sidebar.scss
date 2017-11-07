@@ -20,13 +20,13 @@
   padding: 0 2rem 2rem;
 
   .custom-control {
+    color: #777;
     font-size: .875rem;
     margin: 0;
     min-height: 0;
     display: block;
-    cursor: pointer;
     margin-bottom: .125rem;
-    color: #777;
+    cursor: pointer;
 
     &:hover {
       color: #000;
@@ -41,10 +41,10 @@
       @include ellipsis;
       display: block;
     }
-  }
 
-  .custom-control-input:checked ~ .custom-control {
-    color:red !important;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .filter-group {
