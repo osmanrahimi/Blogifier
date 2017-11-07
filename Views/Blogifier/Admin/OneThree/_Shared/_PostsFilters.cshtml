@@ -38,12 +38,12 @@
 <form class="bf-posts-search" action="~/admin" method="get">
     <input class="form-control form-control-sm form-control-rounded" type="search" name="search" placeholder="Search..." autocomplete="off" />
 </form>
-<form id="frmPostFilter">
+<form id="frmPostFilter" class="bf-posts-filters">
     @if (showUsers)
     {
-        <div class="filters-group">
-            <div class="filters-group-title">Users</div>
-            <ul>
+        <div class="filter-group">
+            <div class="filter-group-title"><span>Users</span></div>
+            <ul class="filter-group-list">
                 <li>
                     <label class="filters-label custom-control custom-radio">
                         <input type="radio" name="user-filter" id="user-filter" value="0" @usrChecked onclick="postsController.filter()" class="custom-control-input">
@@ -66,9 +66,9 @@
             </ul>
         </div>
     }
-    <div class="filters-group">
-        <div class="filters-group-title">Status</div>
-        <ul>
+    <div class="filter-group">
+        <div class="filter-group-title"><span>Status</span></div>
+        <ul class="filter-group-list">
             @foreach (var ftr in Model.StatusFilter)
             {
                 var statChecked = stat == ftr.Value ? "checked" : "";
@@ -80,9 +80,9 @@
     </div>
     @if (Model.CategoryFilter != null && Model.CategoryFilter.Count > 0)
     {
-        <div class="filters-group">
-            <div class="filters-group-title">Categories</div>
-            <ul>
+        <div class="filter-group">
+            <div class="filter-group-title"><span>Category</span></div>
+            <ul class="filter-group-list">
                 @foreach (var cat in Model.CategoryFilter)
                 {
                     var isChecked = cats.Contains(cat.Value.ToString()) ? "checked" : "";

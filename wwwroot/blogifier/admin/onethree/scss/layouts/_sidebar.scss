@@ -12,11 +12,4 @@
   @media screen and (max-width: 991px) {
     display: none;
   }
-
-  &-inner {
-    padding: 2rem;
-    @media screen and (max-width: 991px) {
-      padding: 2rem 1rem;
-    }
-  }
 }
