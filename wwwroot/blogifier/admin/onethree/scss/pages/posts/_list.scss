@@ -1,27 +1,19 @@
+.bf-page-posts {
+  padding: 2rem;
+}
+
 .bf-posts-toolbar {
-  @include clearfix;
-  padding: 2rem 2rem 2rem 0;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 2rem;
 
   .custom-control {
-    margin: 0;
     display: block;
     padding: 0;
-    width: 4rem;
-    height: 2rem;
-
-    &-indicator {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+    width: 1.125rem;
   }
-  @media screen and (max-width:991px) {
-    padding: 1rem 1rem 1rem 0;
 
-    .custom-control {
-      width: 3rem;
-    }
+  .custom-select {
+    width: 5.5rem;
   }
 }
 

@@ -39,3 +39,9 @@ textarea.form-control {
 .custom-control-input:focus~.custom-control-indicator {
     box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(#666,.15);
 }
+
+
+// custom select
+.custom-select-rounded {
+  border-radius: 5rem;
+}
