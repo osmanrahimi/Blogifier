@@ -585,11 +585,13 @@ div.mce-tinymce-inline {
 }
 
 .mce-floatpanel {
-    position: absolute
+    position: absolute;
+    border-radius: .25rem;
 }
 
 .mce-floatpanel.mce-fixed {
-    position: fixed
+    position: fixed;
+
 }
 
 .mce-floatpanel .mce-arrow, .mce-floatpanel .mce-arrow:after {
@@ -685,8 +687,8 @@ div.mce-fullscreen {
 }
 
 #mce-modal-block.mce-in {
-    opacity: .3;
-    filter: alpha(opacity=30);
+    opacity: .75;
+    filter: alpha(opacity=75);
     zoom: 1
 }
 
@@ -704,9 +706,21 @@ div.mce-fullscreen {
     opacity: 0;
     transform: scale(.1);
     transition: transform 100ms ease-in,opacity 150ms ease-in;
-    border-radius:5px;
+    border-radius:.25rem;
     border:none;
     overflow:hidden;
+
+    .mce-foot {
+      .mce-btn{
+        border-radius: 10rem !important;
+        width: auto !important;
+        button{
+          min-width: 80px !important;
+          padding-right: 1rem !important;
+          padding-left: 1rem !important;
+        }
+      }
+    }
 }
 
 .mce-window.mce-in {
@@ -727,7 +741,8 @@ div.mce-fullscreen {
     height: 38px;
     width: 38px;
     text-align: center;
-    cursor: pointer
+    cursor: pointer;
+    outline:none !important;
 }
 
 .mce-window-head .mce-close i {
@@ -735,7 +750,7 @@ div.mce-fullscreen {
 }
 
 .mce-close:hover i {
-    color: #adadad
+    color: red;
 }
 
 .mce-window-head .mce-title {
@@ -771,7 +786,10 @@ div.mce-fullscreen {
 }
 
 .mce-window-body .mce-listbox {
-    border-color: #ccc
+    border-color: #ccc;
+    border-radius: .25rem;
+    background:none;
+    height: 32px !important;
 }
 
 .mce-rtl .mce-window-head .mce-close {
@@ -1362,7 +1380,8 @@ i.mce-i-checkbox {
 .mce-combobox input {
     border: 1px solid #c5c5c5;
     border-right-color: #c5c5c5;
-    height: 28px
+    height: 32px;
+    border-radius: .25rem;
 }
 
 .mce-combobox.mce-disabled input {
@@ -2102,7 +2121,7 @@ div.mce-menu .mce-menu-item b {
     max-height: 400px;
     overflow: auto;
     overflow-x: hidden;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.25);
+    box-shadow: 0 0px 3rem rgba(0, 0, 0, 0.16);
 
     > div {
         width: 100% !important;
@@ -2137,7 +2156,7 @@ div.mce-menu .mce-menu-item b {
 .mce-listbox button {
     text-align: left;
     padding-right: 20px;
-    position: relative
+    position: relative;
 }
 
 .mce-listbox .mce-caret {
@@ -2309,12 +2328,14 @@ i.mce-i-resize {
     display: inline-block;
     -webkit-transition: border linear .2s, box-shadow linear .2s;
     transition: border linear .2s, box-shadow linear .2s;
-    height: 28px;
+    height: 32px;
     resize: none;
     padding: 0 4px 0 4px;
     white-space: pre-wrap;
     *white-space: pre;
     color: #333;
+    border-radius: .25rem;
+    cursor: text;
 }
 
 .mce-textbox:focus, .mce-textbox.mce-focus {

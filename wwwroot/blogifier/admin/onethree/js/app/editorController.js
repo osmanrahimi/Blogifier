@@ -243,8 +243,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             {text: 'Python', value: 'python'},
             {text: 'Java', value: 'java'}
         ],
-        codesample_dialog_width: 460,
-        codesample_dialog_height: 460,
+        link_title: false,
         setup: function (editor) {
             editor.addButton('heading', {
                 type: 'menubutton',

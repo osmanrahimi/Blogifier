@@ -188,3 +188,95 @@
   font-size: 1.25rem;
   color: #aaa;
 }
+@media screen and (max-width: 479px) {
+  .mce-window {
+    width: auto !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    bottom: auto !important;
+    * {
+      box-sizing: border-box;
+    }
+  }
+
+  .mce-foot {
+    text-align: center;
+
+    > div {
+      width: 100%;
+    }
+  }
+
+  .mce-foot > .mce-container-body {
+    padding: 10px !important;
+    text-align: center;
+  }
+
+  .mce-foot button {}
+
+  .mce-panel {
+    max-width: 100% !important;
+  }
+
+  .mce-container {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .mce-container-body {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .mce-form {
+    padding: 10px !important;
+  }
+
+  .mce-tabs {
+    max-width: 100% !important;
+  }
+
+  .mce-tabs .mce-tab,
+  .mce-tabs .mce-tab.mce-active {
+    height: 2rem;
+  }
+
+  .mce-formitem {
+    margin: 10px 0 !important;
+  }
+
+  .mce-btn > button {}
+
+  .mce-abs-layout-item {
+    position: static !important;
+    width: auto !important;
+  }
+
+  .mce-abs-layout-item.mce-label {
+    display: block !important;
+  }
+
+  .mce-abs-layout-item.mce-textbox {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .mce-listbox {
+    width: 100% !important;
+  }
+
+  .mce-abs-layout-item.mce-combobox {
+    display: flex !important;
+  }
+
+  .mce-abs-layout-item.mce-combobox > .mce-textbox {
+    -ms-flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    height: 29px !important;
+  }
+}
