@@ -24,8 +24,8 @@
     font-size: .875rem;
     margin: 0;
     min-height: 0;
+    height: 1.25rem;
     display: block;
-    margin-bottom: .125rem;
     cursor: pointer;
 
     &:hover {
@@ -40,10 +40,6 @@
     &-description {
       @include ellipsis;
       display: block;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 
@@ -88,5 +84,13 @@
 
   .filter-group-list {
     @include unstyled(ul);
+
+    li {
+      margin-bottom: .125rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
