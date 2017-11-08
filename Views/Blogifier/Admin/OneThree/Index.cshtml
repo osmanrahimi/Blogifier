@@ -50,7 +50,7 @@
           var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
           if (curPost == 0) { curPost = item.BlogPostId; }
           <li class="post-item d-flex">
-              <label class="item-select custom-control custom-checkbox"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+              <label class="item-select custom-control custom-checkbox mr-3 my-auto"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
               <a class="item-link" href="~/admin/editor/@item.BlogPostId?user=@user">@item.Title</a>
               <span class="item-status @publishedClass ml-auto my-auto"><i class="fa fa-circle"></i></span>
               <!-- <span class="item-info-views">@item.PostViews Views</span> -->

@@ -28,31 +28,50 @@
 
 .post-item {
   position: relative;
-  margin-bottom: 1rem;
+  height: 3rem;
 
   .custom-control {
     display: block;
     padding: 0;
-    width: 1.125rem;
+    margin: 0;
+    min-width: 1rem;
+    min-height: 1rem;
+    width: 1rem;
+    height: 1rem;
+
+    &-indicator {
+      top: 0;
+      left: 0;
+    }
   }
 
   .item-link {
     color: #000;
+    height: 3rem;
+    line-height: 3rem;
+    display: block;
+    width: 100%;
+    @include ellipsis;
 
+    &:focus {
+      outline: none;
+    }
+
+    &:focus,
     &:hover {
-      color: #aaa;
+      color: $cl-bf;
     }
   }
 
   .item-status {
-    font-size: .75rem;
+    font-size: .625rem;
 
     &-draft {
-      color: orange;
+      color: #ff9b00;
     }
 
     &-published {
-      color: green;
+      color: #00c748;
     }
   }
 
@@ -61,11 +80,53 @@
     color: #666;
     font-size: .75rem;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .item-favorite {
+    font-size: .875rem;
+    cursor: pointer;
+    padding: 0;
+
+    .fa-star-o {
+      color: #888;
+    }
+
+    .fa-star {
+      color: #ffbe00;
+    }
+
+    &:focus,
+    &:hover {
+      outline: none;
+
+      .fa-star-o {
+        color: #ffbe00;
+      }
+
+      .fa-star {
+        color: #888;
+      }
+    }
   }
 
   .item-show {
+    font-size: .875rem;
+    color: #888;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus,
+    &:hover {
+      color: $cl-bf;
+    }
+  }
+  //
+  &:hover {
+    .item-link {
+      color: $cl-bf;
+    }
   }
 }
