@@ -40,7 +40,7 @@
   <ul class="bf-posts-list" aria-label="posts">
       @if (!string.IsNullOrEmpty(searchTerm))
       {
-          <li class="item item-search">
+          <li class="post-search">
               <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
           </li>
       }
@@ -70,7 +70,7 @@
   </ul>
   @if (pgr.ShowNewer || pgr.ShowOlder)
   {
-      <ul class="bf-posts-pagination">
+      <ul class="bf-posts-pagination d-flex">
           @if (pgr.ShowOlder)
           {
               <li class="item"><a class="item-link" href="~/admin?page=@pgr.Older"><i class="fa fa-chevron-left"></i></a></li>

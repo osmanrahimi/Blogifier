@@ -24,6 +24,26 @@
 
 .bf-posts-list {
   @include unstyled(ul);
+  margin-bottom: 1rem;
+}
+
+.post-search {
+  margin-bottom: .5rem;
+
+  a {
+    display: block;
+
+    &:hover {
+      color: #000;
+    }
+
+    i {
+      width: 1rem;
+      height: 2rem;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .post-item {
@@ -65,6 +85,7 @@
 
   .item-status {
     font-size: .625rem;
+    padding-left: 1rem;
 
     &-draft {
       color: #ff9b00;
@@ -128,5 +149,17 @@
     .item-link {
       color: $cl-bf;
     }
+  }
+}
+//
+
+.bf-posts-pagination {
+  @include unstyled(ul);
+
+  i {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    margin-right: 1rem;
   }
 }
