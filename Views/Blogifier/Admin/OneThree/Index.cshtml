@@ -47,7 +47,7 @@
 
 
   <!-- List -->
-  <ul class="bf-posts-list d-none" aria-label="posts">
+  <ul class="bf-posts-list" aria-label="posts">
       @foreach (var item in Model.BlogPosts)
       {
           var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
@@ -69,27 +69,29 @@
 
 
   <!-- Grid -->
-  <div class="bf-posts-grid row" aria-label="posts">
-    @foreach (var item in Model.BlogPosts)
-    {
-      var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
-      var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
-      if (curPost == 0) { curPost = item.BlogPostId; }
-      <div class="col-md-6 col-lg-4">
-        <div class="post-grid-item">
-          <a class="item-link" href="~/admin/editor/@item.BlogPostId?user=@user" style="background-image:url(@item.Image);"><div class="item-title mt-auto">@item.Title</div></a>
-          <div class="item-info d-flex">
-            <label class="item-select custom-control custom-checkbox mr-3 my-auto"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
-            <span class="item-date my-auto">@publishedLbl</span>
-            <span class="item-status @publishedClass my-auto ml-auto"><i class="fa fa-circle"></i></span>
-            @if (Model.Profile.IsAdmin) {
-              <button class="btn-unstyled item-favorite my-auto ml-3" onclick="postsController.featured('@item.BlogPostId', this)"> @if (item.IsFeatured) { <i class="fa fa-star"></i> } else { <i class="fa fa-star-o"></i> } </button>
-            }
-            <a class="item-show my-auto ml-3" href="~/@ApplicationSettings.BlogRoute@item.Slug" target="_blank" role="button"><i class="fa fa-external-link-square"></i></a>
+  <div class="bf-posts-grid" aria-label="posts">
+    <div class="row">
+      @foreach (var item in Model.BlogPosts)
+      {
+        var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
+        var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
+        if (curPost == 0) { curPost = item.BlogPostId; }
+        <div class="col-md-6 col-lg-4">
+          <div class="post-grid-item">
+            <a class="item-link" href="~/admin/editor/@item.BlogPostId?user=@user" style="background-image:url(@item.Image);"><div class="item-title mt-auto">@item.Title</div></a>
+            <div class="item-info d-flex">
+              <label class="item-select custom-control custom-checkbox mr-3 my-auto"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+              <span class="item-date my-auto">@publishedLbl</span>
+              <span class="item-status @publishedClass my-auto ml-auto"><i class="fa fa-circle"></i></span>
+              @if (Model.Profile.IsAdmin) {
+                <button class="btn-unstyled item-favorite my-auto ml-3" onclick="postsController.featured('@item.BlogPostId', this)"> @if (item.IsFeatured) { <i class="fa fa-star"></i> } else { <i class="fa fa-star-o"></i> } </button>
+              }
+              <a class="item-show my-auto ml-3" href="~/@ApplicationSettings.BlogRoute@item.Slug" target="_blank" role="button"><i class="fa fa-external-link-square"></i></a>
+            </div>
           </div>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 
 
