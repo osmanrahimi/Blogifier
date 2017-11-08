@@ -1,0 +1,20 @@
+
+.bf-posts-toolbar {
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+
+  .custom-control {
+    display: block;
+    padding: 0;
+    width: 1.125rem;
+  }
+
+  .custom-select {
+    width: 5.5rem;
+  }
+  @media screen and (max-width: 991px) {
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+}

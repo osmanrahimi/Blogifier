@@ -1,0 +1,12 @@
+.bf-page-posts {
+  padding: 2rem;
+  @media screen and (max-width: 991px) {
+    padding: 0;
+  }
+}
+@import "sidebar";
+@import "toolbar";
+@import "search";
+@import "list";
+@import "grid";
+@import "pagination";

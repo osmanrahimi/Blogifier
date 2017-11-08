@@ -1,0 +1,25 @@
+
+.post-search {
+  margin-bottom: .5rem;
+
+  a {
+    display: block;
+
+    &:hover {
+      color: #000;
+    }
+
+    i {
+      width: 1rem;
+      height: 2rem;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    padding: 0 1rem;
+    margin: 0;
+    line-height: 3rem;
+    border-bottom: 1px solid #eee;
+  }
+}
