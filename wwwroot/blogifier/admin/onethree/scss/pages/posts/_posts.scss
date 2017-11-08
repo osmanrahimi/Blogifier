@@ -2,6 +2,10 @@
   padding: 2rem;
   @media screen and (max-width: 991px) {
     padding: 0;
+
+    .bf-posts-empty {
+      padding: 0 1rem;
+    }
   }
 }
 @import "sidebar";
