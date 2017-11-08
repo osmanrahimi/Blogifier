@@ -37,37 +37,69 @@
         <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-toggle="tooltip" onclick="" title="Card Style"><i class="fa fa-th"></i></button>
       </div>
   </div>
-  <ul class="bf-posts-list" aria-label="posts">
-      @if (!string.IsNullOrEmpty(searchTerm))
-      {
-          <li class="post-search">
-              <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
-          </li>
-      }
+
+  @if (!string.IsNullOrEmpty(searchTerm))
+  {
+      <div class="post-search">
+          <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
+      </div>
+  }
+
+
+  <!-- List -->
+  <ul class="bf-posts-list d-none" aria-label="posts">
       @foreach (var item in Model.BlogPosts)
       {
           var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
           var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
           if (curPost == 0) { curPost = item.BlogPostId; }
-          <li class="post-item d-flex">
+          <li class="post-list-item d-flex">
               <label class="item-select custom-control custom-checkbox mr-3 my-auto"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
               <a class="item-link" href="~/admin/editor/@item.BlogPostId?user=@user">@item.Title</a>
               <span class="item-status @publishedClass ml-auto my-auto"><i class="fa fa-circle"></i></span>
-              <!-- <span class="item-info-views">@item.PostViews Views</span> -->
               <span class="item-date my-auto ml-3">@publishedLbl</span>
               @if (Model.Profile.IsAdmin) {
               <button class="btn-unstyled item-favorite my-auto ml-3" onclick="postsController.featured('@item.BlogPostId', this)"> @if (item.IsFeatured) { <i class="fa fa-star"></i> } else { <i class="fa fa-star-o"></i> } </button>
               }
-              <a class="item-show my-auto ml-3" href="~/@ApplicationSettings.BlogRoute@item.Slug" target="_blank" role="button"><i class="fa fa-chevron-right"></i></a>
-          </li>
-      }
-      @if (Model.BlogPosts.Count() == 0)
-      {
-          <li class="item item-empty">
-              No posts found.
+              <a class="item-show my-auto ml-3" href="~/@ApplicationSettings.BlogRoute@item.Slug" target="_blank" role="button"><i class="fa fa-external-link-square"></i></a>
           </li>
       }
   </ul>
+
+
+
+  <!-- Grid -->
+  <div class="bf-posts-grid row" aria-label="posts">
+    @foreach (var item in Model.BlogPosts)
+    {
+      var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
+      var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
+      if (curPost == 0) { curPost = item.BlogPostId; }
+      <div class="col-md-6 col-lg-4">
+        <div class="post-grid-item">
+          <a class="item-link" href="~/admin/editor/@item.BlogPostId?user=@user" style="background-image:url(@item.Image);"><div class="item-title mt-auto">@item.Title</div></a>
+          <div class="item-info d-flex">
+            <label class="item-select custom-control custom-checkbox mr-3 my-auto"><input type="checkbox" id="@item.BlogPostId" class="item-checkbox custom-control-input"><span class="item-control custom-control-indicator"></span></label>
+            <span class="item-date my-auto">@publishedLbl</span>
+            <span class="item-status @publishedClass my-auto ml-auto"><i class="fa fa-circle"></i></span>
+            @if (Model.Profile.IsAdmin) {
+              <button class="btn-unstyled item-favorite my-auto ml-3" onclick="postsController.featured('@item.BlogPostId', this)"> @if (item.IsFeatured) { <i class="fa fa-star"></i> } else { <i class="fa fa-star-o"></i> } </button>
+            }
+            <a class="item-show my-auto ml-3" href="~/@ApplicationSettings.BlogRoute@item.Slug" target="_blank" role="button"><i class="fa fa-external-link-square"></i></a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+
+  @if (Model.BlogPosts.Count() == 0)
+  {
+      <div class="item item-empty">
+          No posts found.
+      </div>
+  }
+
   @if (pgr.ShowNewer || pgr.ShowOlder)
   {
       <ul class="bf-posts-pagination d-flex">
