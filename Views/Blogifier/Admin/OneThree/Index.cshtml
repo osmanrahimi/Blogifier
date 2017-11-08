@@ -21,21 +21,26 @@
   <div class="bf-posts-toolbar d-flex">
       <label class="custom-control custom-checkbox my-auto mr-3"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
       <div class="btn-group mr-3">
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-toggle="tooltip" onclick="return postsController.removePost()" title="Delete"><i class="fa fa-trash"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-toggle="tooltip" onclick="return postsController.unpublish()" title="Unpublish"><i class="fa fa-archive"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-toggle="tooltip" onclick="return postsController.publish()" title="Publish"><i class="fa fa-check"></i></button>
+        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.removePost()" title="Delete"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.unpublish()" title="Unpublish"><i class="fa fa-archive"></i></button>
+        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.publish()" title="Publish"><i class="fa fa-check"></i></button>
       </div>
       <div class="loading loading-sm mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
-      <select class="custom-select custom-select-rounded ml-auto mr-3 d-none d-lg-block">
-        <option value="0" selected>10</option>
-        <option value="1">15</option>
-        <option value="2">20</option>
-        <option value="3">30</option>
-        <option value="4">50</option>
-      </select>
-      <div class="btn-group d-none d-lg-flex">
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-toggle="tooltip" onclick="" title="Card Style"><i class="fa fa-list"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded active" data-toggle="tooltip" onclick="" title="Card Style"><i class="fa fa-th"></i></button>
+      <div class="dropdown dropdown-custom ml-auto mr-3 d-none d-lg-block">
+        <button class="btn btn-sm btn-outline-secondary btn-rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="dropdown-value">10</span> Posts
+        </button>
+        <div class="dropdown-menu dropdown-menu-wide" aria-labelledby="dropdownMenuButton">
+          <button class="dropdown-item" type="button">10</button>
+          <button class="dropdown-item" type="button">20</button>
+          <button class="dropdown-item" type="button">30</button>
+          <button class="dropdown-item" type="button">40</button>
+          <button class="dropdown-item" type="button">50</button>
+        </div>
+      </div>
+      <div class="btn-group ml-auto ml-lg-0">
+        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="" title="List style"><i class="fa fa-list"></i></button>
+        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded active" data-tooltip onclick="" title="Grid style"><i class="fa fa-th"></i></button>
       </div>
   </div>
   <!--/Toolbar -->

@@ -126,9 +126,17 @@ var settingPageTitle = $(".bf-settings").data("page-title");
 $(".bf-header span").text(settingPageTitle);
 
 // Tooltips
-$("[data-tooltip]").tooltip();
+$("[data-tooltip]").tooltip({
+  container: 'body'
+});
 
-
-$('.modal').on('shown.bs.modal', function () {
+$('.modal').on('shown.bs.modal', function() {
   $(this).find('[autofocus]').trigger('focus')
 })
+
+
+// dropdown
+$('.dropdown-custom .dropdown-item').on('click', function() {
+  var thisValue = $(this).text();
+  $(this).parent().parent().find(".dropdown-toggle .dropdown-value").text(thisValue);
+});
