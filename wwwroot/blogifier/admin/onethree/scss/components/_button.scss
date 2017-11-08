@@ -53,48 +53,18 @@
 // BTN PRIMARY
 
 .btn-primary {
-  background-color: $cl-bf;
-  border-color: $cl-bf;
-
-  &:hover {
-    background-color: darken($cl-bf, 7);
-    border-color: darken($cl-bf, 7);
-  }
-
-  &:not([disabled]):not(.disabled).active,
-  &:not([disabled]):not(.disabled):active,
-  .show > &.dropdown-toggle {
-    background-color: darken($cl-bf, 7);
-    border-color: darken($cl-bf, 7);
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
-  }
-
-  &.focus,
-  &:focus {
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
-  }
+  @include btn($cl-bf);
 }
-// BTN OUTLINE PRIMARY
 
 .btn-outline-primary {
-  color: $cl-bf;
-  border-color: $cl-bf;
+  @include btn-outline($cl-bf);
+}
+// BTN SECONDARY
 
-  &:hover {
-    background-color: $cl-bf;
-    border-color: $cl-bf;
-  }
+.btn-secondary {
+  @include btn($cl-gray);
+}
 
-  &.focus,
-  &:focus {
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
-  }
-
-  &:not([disabled]):not(.disabled).active,
-  &:not([disabled]):not(.disabled):active,
-  .show > &.dropdown-toggle {
-    background-color: darken($cl-bf, 7);
-    border-color: darken($cl-bf, 7);
-    box-shadow: 0 0 0 .2rem rgba($cl-bf,.5);
-  }
+.btn-outline-secondary {
+  @include btn-outline($cl-gray);
 }
