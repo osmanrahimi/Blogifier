@@ -13,6 +13,10 @@
     {
         user = "0";
     }
+    var listStyle = "display: none";
+    var gridStyle = "";
+    var listBtnStyle = "";
+    var gridBtnStyle = "active";
 }
 
 <div class="bf-page-posts">
@@ -39,8 +43,8 @@
         </div>
       </div>
       <div class="btn-group ml-auto ml-lg-0">
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="" title="List style"><i class="fa fa-list"></i></button>
-        <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded active" data-tooltip onclick="" title="Grid style"><i class="fa fa-th"></i></button>
+        <button id="post-list-btn" type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded @listBtnStyle" data-tooltip onclick="postsController.togglePostView('list')" title="List style"><i class="fa fa-list"></i></button>
+        <button id="post-grid-btn" type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded @gridBtnStyle" data-tooltip onclick="postsController.togglePostView('grid')" title="Grid style"><i class="fa fa-th"></i></button>
       </div>
   </div>
   <!--/Toolbar -->
@@ -55,7 +59,7 @@
   <!--/Search -->
 
   <!-- List -->
-  <ul class="bf-posts-list" aria-label="posts">
+  <ul class="bf-posts-list" aria-label="posts" style="@listStyle">
       @foreach (var item in Model.BlogPosts)
       {
           var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
@@ -76,7 +80,7 @@
   <!--/List -->
 
   <!-- Grid -->
-  <div class="bf-posts-grid" aria-label="posts">
+  <div class="bf-posts-grid" aria-label="posts" style="@gridStyle">
     <div class="row">
       @foreach (var item in Model.BlogPosts)
       {

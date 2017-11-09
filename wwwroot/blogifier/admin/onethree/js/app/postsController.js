@@ -100,12 +100,30 @@
         toastr.error(msg);
     }
 
+    function togglePostView(active) {
+        if (active == "list") {
+            $('#post-list-btn').addClass('active');
+            $('#post-grid-btn').removeClass('active');
+            
+            $('.bf-posts-grid').hide();
+            $('.bf-posts-list').show();
+        }
+        else {
+            $('#post-grid-btn').addClass('active');
+            $('#post-list-btn').removeClass('active');
+
+            $('.bf-posts-list').hide();
+            $('.bf-posts-grid').show();
+        }
+    }
+
     return {
         publish: publish,
         unpublish: unpublish,
         removePost: removePost,
         filter: filter,
-        featured: featured
+        featured: featured,
+        togglePostView: togglePostView
     }
 }(DataService);
 
