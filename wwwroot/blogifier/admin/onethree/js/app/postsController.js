@@ -151,3 +151,11 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
         $(firstItemCheck).prop('checked', false);
     }
 });
+
+// filters collapsable
+$('.filter-group-title').on('click', function(){
+  if($(window).width() < 992) {
+    $(this).toggleClass('active');
+    $(this).parent().toggleClass('active');
+  }
+});

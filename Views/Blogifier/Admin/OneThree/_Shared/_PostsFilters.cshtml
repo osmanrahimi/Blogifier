@@ -39,10 +39,11 @@
     <input class="form-control form-control-sm form-control-rounded" type="search" name="search" placeholder="Search..." autocomplete="off" />
 </form>
 <form id="frmPostFilter" class="bf-posts-filters">
+    <div class="filter-label d-block d-lg-none">Filter by</div>
     @if (showUsers)
     {
         <div class="filter-group">
-            <div class="filter-group-title"><span>Users</span></div>
+            <div class="filter-group-title"><span>Users</span> <i class="fa fa-chevron-down d-block d-lg-none"></i></div>
             <ul class="filter-group-list">
                 <li>
                     <label class="filters-label custom-control custom-radio">
@@ -67,7 +68,7 @@
         </div>
     }
     <div class="filter-group">
-        <div class="filter-group-title"><span>Status</span></div>
+        <div class="filter-group-title"><span>Status</span> <i class="fa fa-chevron-down d-block d-lg-none"></i></div>
         <ul class="filter-group-list">
             @foreach (var ftr in Model.StatusFilter)
             {
@@ -81,7 +82,7 @@
     @if (Model.CategoryFilter != null && Model.CategoryFilter.Count > 0)
     {
         <div class="filter-group">
-            <div class="filter-group-title"><span>Category</span></div>
+            <div class="filter-group-title"><span>Category</span> <i class="fa fa-chevron-down d-block d-lg-none"></i></div>
             <ul class="filter-group-list">
                 @foreach (var cat in Model.CategoryFilter)
                 {
