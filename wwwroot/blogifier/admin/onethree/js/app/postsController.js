@@ -101,21 +101,21 @@
     }
 
     function togglePostView(active) {
-        var obj = { CustomKey: 'PostListStyle', CustomValue: 'grid' }    
+        var obj = { CustomKey: 'PostListStyle', CustomValue: 'grid' }
         if (active == "list") {
             $('#post-list-btn').addClass('active');
             $('#post-grid-btn').removeClass('active');
-            
-            $('.bf-posts-grid').hide();
-            $('.bf-posts-list').show();
+
+            $('.bf-posts-grid').removeClass('active');
+            $('.bf-posts-list').addClass('active');
             obj.CustomValue = 'list';
         }
         else {
             $('#post-grid-btn').addClass('active');
             $('#post-list-btn').removeClass('active');
 
-            $('.bf-posts-list').hide();
-            $('.bf-posts-grid').show();
+            $('.bf-posts-list').removeClass('active');
+            $('.bf-posts-grid').addClass('active');
         }
         dataService.put("blogifier/api/profile/setcustomfield", obj, emptyCallback, fail);
     }
@@ -151,4 +151,3 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
         $(firstItemCheck).prop('checked', false);
     }
 });
-

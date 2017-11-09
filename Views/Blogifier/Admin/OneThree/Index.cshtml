@@ -18,8 +18,8 @@
     {
         postListStyle = Model.CustomFields["PostListStyle"];
     }
-    var listStyle = postListStyle == "grid" ? "display: none" : "";
-    var gridStyle = postListStyle == "grid" ? "" : "display: none";
+    var listStyle = postListStyle == "grid" ? "" : "active";
+    var gridStyle = postListStyle == "grid" ? "active" : "";
     var listBtnStyle = postListStyle == "grid" ? "" : "active";
     var gridBtnStyle = postListStyle == "grid" ? "active" : "";
 }
@@ -64,7 +64,7 @@
   <!--/Search -->
 
   <!-- List -->
-  <ul class="bf-posts-list" aria-label="posts" style="@listStyle">
+  <ul class="bf-posts-list @listStyle" aria-label="posts">
       @foreach (var item in Model.BlogPosts)
       {
           var publishedLbl = item.Published == DateTime.MinValue ? item.LastUpdated.ToString("MMM dd, yyyy") : item.Published.ToString("MMM dd, yyyy");
@@ -85,7 +85,7 @@
   <!--/List -->
 
   <!-- Grid -->
-  <div class="bf-posts-grid" aria-label="posts" style="@gridStyle">
+  <div class="bf-posts-grid @gridStyle" aria-label="posts">
     <div class="row">
       @foreach (var item in Model.BlogPosts)
       {

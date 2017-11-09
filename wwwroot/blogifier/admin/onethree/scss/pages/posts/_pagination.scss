@@ -1,5 +1,6 @@
 .bf-posts-pagination {
   @include unstyled(ul);
+  padding: 1rem 0;
 
   i {
     width: 1rem;
@@ -8,7 +9,6 @@
     margin-right: 1rem;
   }
   @media screen and (max-width: 991px) {
-    padding: 0 1rem;
-    margin-bottom: 1rem;
+    padding: 1rem;
   }
 }

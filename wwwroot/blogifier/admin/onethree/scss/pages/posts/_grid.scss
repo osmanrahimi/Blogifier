@@ -1,5 +1,9 @@
 .bf-posts-grid {
-  margin-bottom: 1rem;
+  display: none;
+
+  &.active {
+    display: block;
+  }
   @media screen and (max-width: 991px) {
     padding: 1rem 1rem 0;
     margin-bottom: 0;
