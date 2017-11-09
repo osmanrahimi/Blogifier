@@ -1,6 +1,4 @@
 .bf-page-posts {
-  padding: 2rem;
-
   .bf-toolbar {
     .custom-control {
       display: block;
@@ -13,13 +11,6 @@
     }
   }
   @media screen and (max-width: 991px) {
-    padding: 0 0 1rem;
-
-    .bf-toolbar {
-      padding: 1rem;
-      margin-bottom: 0;
-    }
-
     .bf-posts-empty {
       padding: 0 1rem;
     }

@@ -2,18 +2,16 @@
   display: none;
   position: relative;
   flex-wrap: wrap;
-  margin-right: -1rem;
-  margin-left: -1rem;
+  padding: 0 1rem;
 
   .post-grid-col {
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-
     @media screen and (min-width:40rem) {
       width: 50%;
-      margin-bottom: 2rem;
+      margin-top: 2rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
     @media screen and (min-width:80rem) {
       width: 33.333%;
@@ -22,9 +20,8 @@
       width: 25%;
     }
   }
-  @media screen and (max-width: 991px) {
-    margin: 0;
-    padding: 1rem 0 0;
+  @media screen and (max-width: 40rem - .0625rem) {
+    padding: 0 1rem;
   }
 }
 

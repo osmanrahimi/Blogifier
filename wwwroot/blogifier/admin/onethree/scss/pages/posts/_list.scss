@@ -1,12 +1,14 @@
 .bf-posts-list {
   display: none;
   @include unstyled(ul);
-  margin-bottom: 1rem;
+  @media screen and (max-width: 991px) {}
 }
 
 .post-list-item {
   position: relative;
   height: 3rem;
+  padding: 0 2rem;
+  border-bottom: 1px solid #f8f8f8;
 
   .custom-control {
     display: block;
@@ -104,13 +106,10 @@
   }
   //
   &:hover {
-    .item-link {
-      color: $cl-bf;
-    }
+    background-color: #f8f8f8;
   }
   @media screen and (max-width: 991px) {
     padding: 0 1rem;
-    border-bottom: 1px solid #eee;
   }
   @media screen and (max-width: 767px) {
     .item-date {

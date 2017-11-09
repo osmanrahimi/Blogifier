@@ -14,6 +14,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  background-color: #555;
 
   &::after {
     background-color: rgba(#000000, 0.5);
@@ -54,6 +55,11 @@
   @media screen and (max-width: 991px) {
     font-size: 1.125rem;
   }
+}
+
+.bf-editor-text {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .bf-editor-category {

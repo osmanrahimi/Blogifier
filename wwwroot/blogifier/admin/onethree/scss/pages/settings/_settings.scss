@@ -1,6 +1,10 @@
 .bf-settings {
   padding: 2rem;
 
+  .bf-toolbar {
+    margin: -2rem -2rem 2rem;
+  }
+
   .btn-main {
     min-width: 8rem;
   }
@@ -13,6 +17,14 @@
     &-boxed {
       margin: auto;
     }
+  }
+
+  @media screen and (max-width: 991px){
+    padding: 1rem;
+    .bf-toolbar {
+      margin: -1rem -1rem 1rem;
+    }
+
   }
 }
 
