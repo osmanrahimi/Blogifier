@@ -35,6 +35,25 @@
     top: 50%;
     transform: translate(-50%,-50%);
   }
+
+  .taskbar-item-img {
+    display: block;
+    font-size: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 100%;
+    overflow: hidden;
+
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
   @media screen and (min-width: 992px) {
     width: $width-taskbar;
     position: fixed;

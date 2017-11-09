@@ -1,4 +1,22 @@
 @using Blogifier.Core.Common
+@{
+    var avatar = ApplicationSettings.ProfileAvatar;
+    var userName = "";
+    var blogTitle = ApplicationSettings.Title;
+    var blogDesc = ApplicationSettings.Description;
+    var blogImg = ApplicationSettings.ProfileImage;
+    if (Model.Profile != null)
+    {
+        userName = Model.Profile.AuthorName;
+        blogTitle = Model.Profile.Title;
+        blogDesc = Model.Profile.Description;
+        blogImg = string.IsNullOrEmpty(Model.Profile.Image) ? blogImg : Model.Profile.Image;
+        if (!string.IsNullOrEmpty(Model.Profile.Avatar))
+        {
+            avatar = Model.Profile.Avatar;
+        }
+    }
+}
 <ul class="bf-taskbar d-flex flex-lg-column ">
     <li class="taskbar-item">
         <a class="taskbar-item-link" href="~/admin/editor/0" title="Write New Post"><i class="taskbar-item-icon fa fa-plus"></i></a>
@@ -10,7 +28,7 @@
         <a class="taskbar-item-link" href="~/admin/settings/profile" title="Settings"><i class="taskbar-item-icon fa fa-gear"></i></a>
     </li>
     <li class="taskbar-item ml-auto ml-lg-0 mt-lg-auto dropdown">
-        <button class="taskbar-item-link" type="button" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="taskbar-item-icon fa fa-user"></i></button>
+        <button class="taskbar-item-link" type="button" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="taskbar-item-img"><img src="@avatar" alt="@userName"></span></button>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
             <a target="_blank" class="dropdown-item" href="~/">View blog</a>
             <a target="_blank" class="dropdown-item" href="~/account/ChangePassword">Change password</a>
