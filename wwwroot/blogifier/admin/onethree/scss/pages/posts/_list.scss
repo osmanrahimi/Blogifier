@@ -1,6 +1,7 @@
 .bf-posts-list {
   display: none;
   @include unstyled(ul);
+  margin-bottom: 1rem;
 
   &.active {
     display: block;
