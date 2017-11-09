@@ -13,10 +13,15 @@
     {
         user = "0";
     }
-    var listStyle = "display: none";
-    var gridStyle = "";
-    var listBtnStyle = "";
-    var gridBtnStyle = "active";
+    var postListStyle = "grid";
+    if(Model.CustomFields.ContainsKey("PostListStyle"))
+    {
+        postListStyle = Model.CustomFields["PostListStyle"];
+    }
+    var listStyle = postListStyle == "grid" ? "display: none" : "";
+    var gridStyle = postListStyle == "grid" ? "" : "display: none";
+    var listBtnStyle = postListStyle == "grid" ? "" : "active";
+    var gridBtnStyle = postListStyle == "grid" ? "active" : "";
 }
 
 <div class="bf-page-posts">
@@ -24,7 +29,7 @@
   <!-- Toolbar -->
   <div class="bf-posts-toolbar d-flex">
       <label class="custom-control custom-checkbox my-auto mr-3"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
-      <div class="btn-group mr-3">
+      <div id="postsMultiactions" class="btn-group mr-3">
         <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.removePost()" title="Delete"><i class="fa fa-trash"></i></button>
         <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.unpublish()" title="Unpublish"><i class="fa fa-archive"></i></button>
         <button type="button" class="btn btn-outline-secondary btn-icon btn-sm btn-rounded" data-tooltip onclick="return postsController.publish()" title="Publish"><i class="fa fa-check"></i></button>
@@ -62,7 +67,7 @@
   <ul class="bf-posts-list" aria-label="posts" style="@listStyle">
       @foreach (var item in Model.BlogPosts)
       {
-          var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
+          var publishedLbl = item.Published == DateTime.MinValue ? item.LastUpdated.ToString("MMM dd, yyyy") : item.Published.ToString("MMM dd, yyyy");
           var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
           if (curPost == 0) { curPost = item.BlogPostId; }
           <li class="post-list-item d-flex">
@@ -84,7 +89,7 @@
     <div class="row">
       @foreach (var item in Model.BlogPosts)
       {
-        var publishedLbl = item.Published == DateTime.MinValue ? "" : item.Published.ToString("MMM dd, yyyy");
+        var publishedLbl = item.Published == DateTime.MinValue ? item.LastUpdated.ToString("MMM dd, yyyy") : item.Published.ToString("MMM dd, yyyy");
         var publishedClass = item.Published == DateTime.MinValue ? "item-status-draft" : "item-status-published";
         if (curPost == 0) { curPost = item.BlogPostId; }
         <div class="col-md-6 col-lg-4">

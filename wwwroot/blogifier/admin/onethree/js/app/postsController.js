@@ -101,12 +101,14 @@
     }
 
     function togglePostView(active) {
+        var obj = { CustomKey: 'PostListStyle', CustomValue: 'grid' }    
         if (active == "list") {
             $('#post-list-btn').addClass('active');
             $('#post-grid-btn').removeClass('active');
             
             $('.bf-posts-grid').hide();
             $('.bf-posts-list').show();
+            obj.CustomValue = 'list';
         }
         else {
             $('#post-grid-btn').addClass('active');
@@ -115,6 +117,7 @@
             $('.bf-posts-list').hide();
             $('.bf-posts-grid').show();
         }
+        dataService.put("blogifier/api/profile/setcustomfield", obj, emptyCallback, fail);
     }
 
     return {
