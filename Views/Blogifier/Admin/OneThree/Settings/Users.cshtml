@@ -12,11 +12,11 @@
 }
 <div class="bf-settings" data-page-title="Users">
 
-  <div class="bf-posts-toolbar">
-      <label class="custom-control custom-checkbox float-left"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
-      <button type="button" class="btn btn-primary btn-sm float-left mr-3" data-toggle="modal" data-target="#createUserModal">Create User</button>
-      <button type="button" id="postsMultiactions" class="btn btn-outline-secondary btn-sm pull-left btn-icon" style="display: none" data-toggle="tooltip" onclick="return usersController.removeUser()" title="Delete"><i class="fa fa-trash"></i></button>
-      <div class="loading loading-sm pull-left mr-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
+  <div class="bf-toolbar d-flex">
+      <label class="custom-control custom-checkbox my-auto mr-3"><input class="custom-control-input item-checkbox" type="checkbox" name="selectAll"><span class="item-control custom-control-indicator"></span></label>
+      <button type="button" class="btn btn-primary btn-rounded btn-sm mr-3" data-toggle="modal" data-target="#createUserModal">Create User</button>
+      <button type="button" id="postsMultiactions" class="btn btn-outline-secondary btn-rounded btn-sm btn-icon" data-tooltip onclick="return usersController.removeUser()" title="Delete"><i class="fa fa-trash"></i></button>
+      <div class="loading loading-sm"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
   </div>
 
   <ul class="bf-posts-list" aria-label="posts">
