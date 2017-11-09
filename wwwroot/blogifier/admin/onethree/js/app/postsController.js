@@ -107,14 +107,14 @@
             $('#post-grid-btn').removeClass('active');
 
             $('.bf-posts-grid').removeClass('d-flex');
-            $('.bf-posts-list').addClass('active');
+            $('.bf-posts-list').addClass('d-block');
             obj.CustomValue = 'list';
         }
         else {
             $('#post-grid-btn').addClass('active');
             $('#post-list-btn').removeClass('active');
 
-            $('.bf-posts-list').removeClass('active');
+            $('.bf-posts-list').removeClass('d-block');
             $('.bf-posts-grid').addClass('d-flex');
         }
         dataService.put("blogifier/api/profile/setcustomfield", obj, emptyCallback, fail);
