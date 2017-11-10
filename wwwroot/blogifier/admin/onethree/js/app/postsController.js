@@ -143,6 +143,7 @@ var sidebarTools = '#sidebarTools';
 // check all
 $(firstItemCheck).on('change', function () {
     $(itemCheck).prop('checked', this.checked);
+    toggleActionBtns();
 });
 
 // uncheck "check all" when one item is unchecked
@@ -150,6 +151,7 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
     if ($(this).not(':checked')) {
         $(firstItemCheck).prop('checked', false);
     }
+    toggleActionBtns();
 });
 
 // filters collapsable
@@ -159,3 +161,13 @@ $('.filter-group-title').on('click', function(){
     $(this).parent().toggleClass('active');
   }
 });
+
+function toggleActionBtns() {
+    var bxs = $('.item-checkbox:checked').length;
+    if (bxs && bxs > 0) {
+        $(btnAction).fadeIn();
+    }
+    else {
+        $(btnAction).fadeOut();
+    }
+}
