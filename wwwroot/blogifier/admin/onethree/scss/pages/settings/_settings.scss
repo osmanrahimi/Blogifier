@@ -18,13 +18,12 @@
       margin: auto;
     }
   }
-
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     padding: 1rem;
+
     .bf-toolbar {
       margin: -1rem -1rem 1rem;
     }
-
   }
 }
 
@@ -141,5 +140,81 @@
       margin: 0 auto;
       width: 2.5rem;
     }
+  }
+}
+//
+
+.bf-settings-users {
+  .bf-toolbar {
+    margin-bottom: 0 !important;
+  }
+}
+
+.bf-users-list {
+  display: none;
+  @include unstyled(ul);
+  margin: 0 -2rem;
+  @media screen and (max-width: 991px) {
+    margin: 0 -1rem 1rem;
+  }
+}
+
+.user-list-item {
+  position: relative;
+  height: 3rem;
+  padding: 0 2rem;
+  border-bottom: 1px solid #f8f8f8;
+
+  .custom-control {
+    display: block;
+    padding: 0;
+    margin: 0;
+    min-width: 1rem;
+    min-height: 1rem;
+    width: 1rem;
+    height: 1rem;
+
+    &-indicator {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .item-name {
+    color: #000;
+    height: 3rem;
+    line-height: 3rem;
+    display: block;
+    width: 100%;
+    @include ellipsis;
+  }
+
+  .item-count {
+    display: block;
+    color: #666;
+    font-size: .75rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .item-show {
+    font-size: .875rem;
+    color: #888;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus,
+    &:hover {
+      color: $cl-bf;
+    }
+  }
+  //
+  &:hover {
+    background-color: #f8f8f8;
+  }
+  @media screen and (max-width: 991px) {
+    padding: 0 1rem;
   }
 }

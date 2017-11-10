@@ -1,7 +1,7 @@
 ﻿var usersController = function (dataService) {
     var removeUser = function () {
         $('.loading').fadeIn();
-        var items = $('.bf-posts-list input:checked');
+        var items = $('.bf-users-list input:checked');
         for (i = 0; i < items.length; i++) {
             if (i + 1 < items.length) {
                 dataService.remove('admin/settings/users/' + items[i].id, emptyCallback, fail);
@@ -45,18 +45,16 @@ $(itemCheck).not(firstItemCheck).on('change', function () {
 });
 
 // show multi action buttons when any item checked
-var btnAction = '#postsMultiactions';
+var usersActionButtons = '#userActionButtons';
 
-$('.bf-posts-list').on('change', itemCheck, function () {
+$('.bf-users-list').on('change', itemCheck, function () {
     toggleActionBtns();
 });
 
 function toggleActionBtns() {
     if ($(itemCheck).is(':checked')) {
-        $(btnAction).show();
+          $(usersActionButtons).removeAttr('disabled');
     } else {
-        $(btnAction).hide();
+          $(usersActionButtons).attr('disabled','disabled');
     }
 }
-
-$(btnAction).hide();
