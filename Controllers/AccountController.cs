@@ -1,4 +1,5 @@
 ﻿using Blogifier.Core.Common;
+using Blogifier.Core.Controllers;
 using Blogifier.Core.Data.Domain;
 using Blogifier.Core.Data.Interfaces;
 using Blogifier.Core.Extensions;
@@ -168,7 +169,7 @@ namespace Blogifier.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(BlogController.Index), "Blog");
         }
 
         [HttpGet]
@@ -177,7 +178,7 @@ namespace Blogifier.Controllers
         {
             if (userId == null || code == null)
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(BlogController.Index), "Blog");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
@@ -336,7 +337,7 @@ namespace Blogifier.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(BlogController.Index), "Blog");
             }
         }
 
