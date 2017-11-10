@@ -120,13 +120,19 @@
         dataService.put("blogifier/api/profile/setcustomfield", obj, emptyCallback, fail);
     }
 
+    function selectListSize(size) {
+        var obj = { CustomKey: 'PostListSize', CustomValue: size }
+        dataService.put("blogifier/api/profile/setcustomfield", obj, reload, fail);
+    }
+
     return {
         publish: publish,
         unpublish: unpublish,
         removePost: removePost,
         filter: filter,
         featured: featured,
-        togglePostView: togglePostView
+        togglePostView: togglePostView,
+        selectListSize: selectListSize
     }
 }(DataService);
 
