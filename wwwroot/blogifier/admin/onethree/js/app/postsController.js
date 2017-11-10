@@ -61,7 +61,7 @@
     }
 
     function loading() {
-        $(btnAction).hide();
+        $(postActionButtons).attr('disabled','disabled');
         $('.spin-icon').fadeIn();
     }
 
@@ -141,24 +141,34 @@ $('.bf-posts-list .item-link-desktop').click(function () {
     $(this).addClass('active');
 });
 
-var itemCheck = $('.item-checkbox');
-var firstItemCheck = itemCheck.first();
-var btnAction = '#postsMultiactions';
+var itemCheckbox = $('.item-checkbox');
+var firstitemCheckbox = itemCheckbox.first();
+var postActionButtons = '#postActionButtons .btn';
 var sidebarTools = '#sidebarTools';
 
 // check all
-$(firstItemCheck).on('change', function () {
-    $(itemCheck).prop('checked', this.checked);
+$(firstitemCheckbox).on('change', function () {
+    $(itemCheckbox).prop('checked', this.checked);
     toggleActionBtns();
 });
 
 // uncheck "check all" when one item is unchecked
-$(itemCheck).not(firstItemCheck).on('change', function () {
+$(itemCheckbox).not(firstitemCheckbox).on('change', function () {
     if ($(this).not(':checked')) {
-        $(firstItemCheck).prop('checked', false);
+        $(firstitemCheckbox).prop('checked', false);
     }
     toggleActionBtns();
 });
+// disable action buttons
+function toggleActionBtns() {
+    var bxs = $('.item-checkbox:checked').length;
+    if (bxs && bxs > 0) {
+        $(postActionButtons).removeAttr('disabled');
+    }
+    else {
+        $(postActionButtons).attr('disabled','disabled');
+    }
+}
 
 // filters collapsable
 $('.filter-group-title').on('click', function(){
@@ -167,13 +177,3 @@ $('.filter-group-title').on('click', function(){
     $(this).parent().toggleClass('active');
   }
 });
-
-function toggleActionBtns() {
-    var bxs = $('.item-checkbox:checked').length;
-    if (bxs && bxs > 0) {
-        $(btnAction).fadeIn();
-    }
-    else {
-        $(btnAction).fadeOut();
-    }
-}

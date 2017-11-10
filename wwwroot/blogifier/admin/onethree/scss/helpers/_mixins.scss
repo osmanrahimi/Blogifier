@@ -159,4 +159,10 @@
     border-color: darken($color, 7);
     box-shadow: none;
   }
+
+  &.disabled,
+  &:disabled {
+    background-color: transparent;
+    border-color: $color;
+  }
 }

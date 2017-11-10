@@ -49,6 +49,11 @@
   .fa {
     font-size: .875rem;
   }
+
+  &.disabled,
+  &:disabled {
+    cursor: default;
+  }
 }
 // BTN PRIMARY
 
