@@ -1,25 +1,35 @@
 .modal {
-    .modal-header {
-        padding: .75rem 1rem;
+  .modal-header {
+    padding: 0 0 0 1rem;
 
-        h4 {
-            font-size: 1rem;
-            margin: 0;
-        }
-        .close {
-            font-size:1rem;
-            cursor:pointer;
-        }
+    .modal-title {
+      font-size: 1rem;
+      margin: auto 0;
     }
 
-    .modal-content {
-        border: 0;
-        overflow: hidden;
+    .close {
+      font-size: 1.25rem;
+      cursor: pointer;
+      margin: auto 0;
+
+      &:focus {
+        outline: none;
+      }
     }
+  }
+
+  .modal-content {
+    border: 0;
+    overflow: hidden;
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .modal-backdrop {
-    &.show {
-        opacity: .75;
-    }
+  &.show {
+    opacity: .75;
+  }
 }

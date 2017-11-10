@@ -1,5 +1,9 @@
 .form-group {
   margin-bottom: 2rem;
+  .field-validation-error{
+    font-size: .75rem;
+    font-weight: 500;
+  }
 }
 
 .form-control {
