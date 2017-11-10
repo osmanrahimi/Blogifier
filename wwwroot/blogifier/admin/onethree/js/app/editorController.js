@@ -1,4 +1,5 @@
 ﻿var editorController = function (dataService) {
+    var backUrl = "/admin";
 
     function savePost(publish) {
         var obj = {
@@ -190,6 +191,13 @@
         toastr.error(msg);
     }
 
+    function saveBackUrl() {
+        backUrl = document.referrer;
+    }
+    function goBack() {
+        window.location.href = backUrl;
+    }
+
     return {
         savePost: savePost,
         unpublishPost: unpublishPost,
@@ -199,7 +207,9 @@
         categoryKeyPress: categoryKeyPress,
         loadPostImage: loadPostImage,
         resetPostImage: resetPostImage,
-        loadActionButtons: loadActionButtons
+        loadActionButtons: loadActionButtons,
+        saveBackUrl: saveBackUrl,
+        goBack: goBack
     }
 }(DataService);
 

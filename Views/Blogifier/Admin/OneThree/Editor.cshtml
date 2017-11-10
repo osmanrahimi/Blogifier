@@ -27,7 +27,7 @@
     <div class="bf-editor-footer">
       <div class="container d-flex">
         <span id="action-buttons" class="mr-2"></span>
-        <a href="~/admin" class="btn btn-sm btn-outline-light btn-rounded d-none d-lg-block">Cancel</a>
+        <button class="btn btn-sm btn-outline-light btn-rounded d-none d-lg-block" onclick="editorController.goBack()">Cancel</button>
         <div class="loading loading-sm ml-3"><div class="loading-dot-1"></div><div class="loading-dot-2"></div><div class="loading-dot-3"></div></div>
         <div class="btn-group ml-auto d-none d-lg-flex">
           <button class="btn btn-sm btn-rounded btn-icon btn-outline-light" data-tooltip title="Cover" onclick="return fileManagerController.open(updatePostCoverCallback);"><i class="fa fa-photo"></i></button>
@@ -121,6 +121,8 @@
     <script src="~/blogifier/admin/onethree/js/app/editorController.js"></script>
     <script>
         autosize($('#txtPostTitle'));
+
+        editorController.saveBackUrl();
 
         editorController.loadPostImage();
         editorController.loadActionButtons();
