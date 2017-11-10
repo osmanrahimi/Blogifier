@@ -1,9 +1,11 @@
-
-.post-search {
-  margin-bottom: .5rem;
+.bf-post-search {
+  border-bottom: 1px solid #f8f8f8;
 
   a {
     display: block;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 2rem;
 
     &:hover {
       color: #000;
@@ -11,15 +13,14 @@
 
     i {
       width: 1rem;
-      height: 2rem;
+      height: 3rem;
       display: inline-block;
       margin-right: 1rem;
     }
   }
   @media screen and (max-width: 991px) {
-    padding: 0 1rem;
-    margin: 0;
-    line-height: 3rem;
-    border-bottom: 1px solid #f8f8f8;
+    a {
+      padding: 0 1rem;
+    }
   }
 }

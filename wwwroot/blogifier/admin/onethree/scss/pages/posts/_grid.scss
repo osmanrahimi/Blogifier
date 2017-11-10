@@ -2,16 +2,14 @@
   display: none;
   position: relative;
   flex-wrap: wrap;
-  padding: 0 1rem;
+  padding: 2rem 1rem 0;
 
   .post-grid-col {
-    margin-top: 1rem;
     width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
     @media screen and (min-width:40rem) {
       width: 50%;
-      margin-top: 2rem;
-      padding-right: 1rem;
-      padding-left: 1rem;
     }
     @media screen and (min-width:80rem) {
       width: 33.333%;
@@ -19,9 +17,15 @@
     @media screen and (min-width:90rem) {
       width: 25%;
     }
+    @media screen and (min-width: 992px) {
+      margin-bottom: 2rem;
+    }
+    @media screen and (max-width: 991px) {
+      margin-bottom: 1rem;
+    }
   }
-  @media screen and (max-width: 40rem - .0625rem) {
-    padding: 0 1rem;
+  @media screen and (max-width: 991px) {
+    padding: 1rem 0 0;
   }
 }
 

@@ -61,7 +61,7 @@
 <!-- Search -->
 @if (!string.IsNullOrEmpty(searchTerm))
 {
-  <div class="post-search">
+  <div class="bf-post-search">
       <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
   </div>
 }
@@ -117,7 +117,7 @@
 @if (Model.BlogPosts.Count() == 0)
 {
     <div class="bf-posts-empty">
-        No posts found.
+        No posts found!
     </div>
 }
 <!--/Empty -->

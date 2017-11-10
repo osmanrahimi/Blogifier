@@ -1,7 +1,10 @@
 .bf-posts-list {
   display: none;
   @include unstyled(ul);
-  @media screen and (max-width: 991px) {}
+  margin-bottom: 2rem;
+  @media screen and (max-width: 991px) {
+    margin-bottom: 1rem;
+  }
 }
 
 .post-list-item {
