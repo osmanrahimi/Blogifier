@@ -24,10 +24,30 @@
     var gridBtnStyle = postListStyle == "grid" ? "active" : "";
 
     var postListSize = ApplicationSettings.ItemsPerPage.ToString();
-    if (Model.CustomFields.ContainsKey("PostListSize"))
+    if (Model.CustomFields.ContainsKey(Constants.PostListSize))
     {
-        postListSize = Model.CustomFields["PostListSize"];
+        postListSize = Model.CustomFields[Constants.PostListSize];
     }
+
+    var qs = "";
+    if(user != "0")
+    {
+        qs += $"&user={user}";
+    }
+    var status = Context.Request.Query["status"];
+    if (!string.IsNullOrEmpty(status))
+    {
+        qs += $"&status={status}";
+    }
+    var cats = Context.Request.Query["cats"];
+    if (!string.IsNullOrEmpty(cats))
+    {
+        qs += $"&cats={cats}";
+    }
+
+    var olderPage = $"admin?page={pgr.Older}{qs}";
+    var newerPage = $"admin?page={pgr.Newer}{qs}";
+    var returnUrl = qs.Length == 0 ? "admin" : $"admin?{qs.Substring(1)}";
 }
 
 <!-- Toolbar -->
@@ -62,7 +82,7 @@
 @if (!string.IsNullOrEmpty(searchTerm))
 {
   <div class="bf-post-search">
-      <a href="~/admin"><i class="fa fa-chevron-left"></i><span>Search Resault: @searchTerm</span></a>
+      <a href="~/@returnUrl"><i class="fa fa-chevron-left"></i><span>Search Result: @searchTerm</span></a>
   </div>
 }
 <!--/Search -->
@@ -128,11 +148,11 @@
     <ul class="bf-posts-pagination d-flex">
         @if (pgr.ShowOlder)
         {
-            <li class="item"><a class="item-link" href="~/admin?page=@pgr.Older"><i class="fa fa-chevron-left"></i></a></li>
+            <li class="item"><a class="item-link" href="~/@olderPage"><i class="fa fa-chevron-left"></i></a></li>
         }
         @if (pgr.ShowNewer)
                 {
-            <li class="item"><a class="item-link" href="~/admin?page=@pgr.Newer"><i class="fa fa-chevron-right"></i></a></li>
+            <li class="item"><a class="item-link" href="~/@newerPage"><i class="fa fa-chevron-right"></i></a></li>
         }
         <li class="item"><span class="item-count">@cntFrom-@cntTo out of @pgr.Total</span></li>
     </ul>
