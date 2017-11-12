@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-Blogifier-EA4B51A7-D733-485C-8744-60123A83CBBD</UserSecretsId>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
     <Description>Blogifier is simple, multi-user and cross-platform blogging application running on ASP.NET Core framework.</Description>
     <RepositoryUrl>https://github.com/blogifierdotnet/Blogifier</RepositoryUrl>
     <PackageProjectUrl>http://blogifier.net</PackageProjectUrl>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blogifier.Core" Version="1.3.5" />
+    <PackageReference Include="Blogifier.Core" Version="1.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />

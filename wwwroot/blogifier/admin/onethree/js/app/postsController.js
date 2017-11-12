@@ -2,6 +2,9 @@
     function publish() {
         loading();
         var items = $('.bf-posts-list input:checked');
+        if (items.length == 0) {
+            items = $('.bf-posts-grid input:checked');
+        }
         for (i = 0; i < items.length; i++) {
             if (i + 1 < items.length) {
                 dataService.put("blogifier/api/posts/publish/" + items[i].id, null, emptyCallback, fail);
@@ -14,6 +17,9 @@
     function unpublish() {
         loading();
         var items = $('.bf-posts-list input:checked');
+        if (items.length == 0) {
+            items = $('.bf-posts-grid input:checked');
+        }
         for (i = 0; i < items.length; i++) {
             if (i + 1 < items.length) {
                 dataService.put("blogifier/api/posts/unpublish/" + items[i].id, null, emptyCallback, fail);
@@ -44,6 +50,9 @@
     function removePost() {
         loading();
         var items = $('.bf-posts-list input:checked');
+        if (items.length == 0) {
+            items = $('.bf-posts-grid input:checked');
+        }
         for (i = 0; i < items.length; i++) {
             if (i + 1 < items.length) {
                 dataService.remove('blogifier/api/posts/' + items[i].id, emptyCallback, fail);

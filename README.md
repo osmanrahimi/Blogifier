@@ -19,4 +19,4 @@ Blogifier is simple, beautiful, light-weight open source blog written in .NET Co
 
 The [demo site](http://blogifier.azurewebsites.net) is a playground to check out Blogifier features. You can write and publish posts, upload files and test application before install. And no worries, it is just a sandbox and will clean itself.
 
-![demo site](https://github.com/blogifierdotnet/Design/blob/master/v1.2/admin/05.png?raw=true)
+![postgrid14](https://user-images.githubusercontent.com/1932785/32695359-16eebbc4-c71f-11e7-9a6c-e09e3f1f8923.PNG)
