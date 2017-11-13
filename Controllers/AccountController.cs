@@ -286,7 +286,8 @@ namespace Blogifier.Controllers
                 return RedirectToAction(nameof(Login));
             }
 
-            var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
+            var profile = _db.Profiles.Single(p => p.IdentityName == User.Identity.Name);
+            var model = new ChangePasswordViewModel { StatusMessage = StatusMessage, Profile = profile };
             return View(model);
         }
 

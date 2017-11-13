@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Blogifier.Core.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Blogifier.Models.AccountViewModels
 {
-    public class ChangePasswordViewModel
+    public class ChangePasswordViewModel : AdminBaseModel
     {
         [Required]
         [DataType(DataType.Password)]
