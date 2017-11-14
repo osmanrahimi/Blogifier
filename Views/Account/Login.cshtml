@@ -7,19 +7,17 @@
     bool showForgotPassword = ViewData["ShowFogotPassword"] != null && (bool)ViewData["ShowFogotPassword"];
 }
 
-<div class="form">
+<div class="form-login">
   <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-    <h1>Welcome!</h1>
-    <p>You can sign in or <a href="~/">go back to blog</a>.</p>
+    <div class="bf-account-header">
+      <h1>Welcome!</h1>
+      <p>You can sign in or <a href="~/">go back to blog</a>.</p>
+    </div>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-      <label asp-for="Email"></label>
-      <input asp-for="Email" class="form-control" autofocus>
+      <input asp-for="Email" class="form-control form-control-lg form-control-top" placeholder="Email" autofocus>
+      <input asp-for="Password" class="form-control form-control-lg form-control-bottom" placeholder="Password">
       <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-      <label asp-for="Password"></label>
-      <input asp-for="Password" class="form-control">
       <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -29,7 +27,7 @@
         <span class="custom-control-description">@Html.DisplayNameFor(m => m.RememberMe)</span>
       </label>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
 
     @if (showForgotPassword)
     {

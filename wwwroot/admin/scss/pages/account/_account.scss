@@ -10,6 +10,18 @@
     box-shadow: 0 0 10rem rgba(#000,.1);
   }
 
+  &-header {
+    margin-bottom: 2rem;
+
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .form-control {
+    font-size: 1rem;
+  }
+
   .container {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -18,15 +30,27 @@
 
   .custom-control {
     margin-bottom: 0;
+    min-height: 1rem;
+
+    &-indicator {
+      top: 0;
+    }
+
+    &-description {
+      height: 1rem;
+      line-height: 1rem;
+    }
   }
 
   h1 {
     font-size: 1.5rem;
   }
 
-.form-group{
-  margin-bottom: 1rem;
-}
+  .form-group,
+  p {
+    margin-bottom: 1rem;
+  }
+
   input:-webkit-autofill,
   input:-webkit-autofill:focus input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -37,5 +61,27 @@
   textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+.form-login {
+  .form-control {
+    position: relative;
+    z-index: 1;
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  .form-control-top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .form-control-bottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
   }
 }
