@@ -1,3 +1,4 @@
+@using Blogifier.Core.Common
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,11 @@
 </head>
 <body class="bf-account">
   <div class="container">
-    @* @await Html.PartialAsync("_LoginPartial") *@
     <div class="bf-account-inner">
       @RenderBody()
+    </div>
+    <div class="bf-account-footer">
+      <a href="http://blogifier.net/" target="_blank" rel="nofollow external" title="Blogifier @ApplicationSettings.Version"><img src="~/admin/img/logo-sm.png" alt="Blogifier"></a>
     </div>
   </div>
   @RenderSection("Scripts", required: false)

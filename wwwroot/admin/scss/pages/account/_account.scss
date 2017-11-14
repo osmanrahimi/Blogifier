@@ -18,6 +18,25 @@
     }
   }
 
+  &-footer {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    a {
+      opacity: .25;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 1rem;
+      height: 1.125rem;
+    }
+  }
+
   .form-control {
     font-size: 1rem;
   }
@@ -61,6 +80,21 @@
   textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
+  }
+  @media screen and (max-width:25rem) {
+    background: #fff;
+    padding: 1rem 0;
+    height: auto;
+
+    &-inner {
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &-footer {
+      margin-bottom: 2rem;
+    }
   }
 }
 
