@@ -104,7 +104,7 @@
   </div>
 </div>
 
-@Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_FileManager.cshtml")
+@Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_FileManager.cshtml")
 @section Scripts{
     <script>
         var textarea = document.getElementById("txtPostTitle");

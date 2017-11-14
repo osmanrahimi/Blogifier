@@ -1,0 +1,15 @@
+﻿@using Blogifier.Core.Common
+<!DOCTYPE html>
+<html lang="en">
+@Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_Head.cshtml")
+<body>
+    <div class="bf">
+        @Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_Taskbar.cshtml")
+        <div class="bf-content">
+            @RenderBody()
+        </div>
+    </div>
+    @Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_Foot.cshtml")
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿@model Blogifier.Core.Data.Models.AdminPostsModel
 @using Blogifier.Core.Common;
 @{
-    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Posts.cshtml";
+    Layout = $"~/{ApplicationSettings.BlogAdminFolder}/_Layout/_Posts.cshtml";
 
     var pgr = Model.Pager;
     var cntFrom = pgr.CurrentPage == 1 ? 1 : (pgr.CurrentPage - 1) * pgr.ItemsPerPage + 1;
@@ -159,7 +159,7 @@
 }
 <!--/Pagination -->
 
-@Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_FileManager.cshtml")
+@Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_FileManager.cshtml")
 @section Scripts{
   <script src="~/admin/js/app/postsController.js"></script>
   <script>

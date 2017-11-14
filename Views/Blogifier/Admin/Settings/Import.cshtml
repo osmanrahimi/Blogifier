@@ -1,6 +1,7 @@
-﻿@model Blogifier.Core.Data.Models.AdminBaseModel
+﻿@using Blogifier.Core.Common
+@model Blogifier.Core.Data.Models.AdminBaseModel
 @{
-    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Settings.cshtml";
+    Layout = $"~/{ApplicationSettings.BlogAdminFolder}/_Layout/_Settings.cshtml";
 }
 <div class="bf-settings bf-settings-boxed bf-settings-import" data-page-title="Import RSS">
     <form id="frmImport" name="frmImport">

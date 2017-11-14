@@ -43,7 +43,7 @@ namespace Blogifier.Controllers
             _emailSender = emailSender;
             _logger = logger;
             _db = db;
-            _theme = "~/Views/Blogifier/Admin/" + ApplicationSettings.AdminTheme + "/";
+            _theme = $"~/{ApplicationSettings.BlogAdminFolder}/";
         }
 
         [VerifyProfile]
@@ -53,7 +53,7 @@ namespace Blogifier.Controllers
             var profile = GetProfile();
             if (!profile.IsAdmin)
             {
-                return View($"~/{ApplicationSettings.BlogThemesFolder}/" + ApplicationSettings.BlogTheme + "/Error.cshtml", 403);
+                return View($"~/{ApplicationSettings.BlogThemesFolder}/{ApplicationSettings.BlogTheme}/Error.cshtml", 403);
             }
             var pager = new Pager(page);
             var blogs = _db.Profiles.ProfileList(p => p.Id > 0, pager);

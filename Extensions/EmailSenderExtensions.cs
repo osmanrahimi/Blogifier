@@ -16,8 +16,7 @@ namespace Blogifier.Services
 
         public static Task SendEmailWelcomeAsync(this IEmailSender emailSender, string email, string name, string link)
         {
-            string dir = ApplicationSettings.WebRootPath;
-            string file = Path.Combine(dir, @"blogifier\admin\" + ApplicationSettings.AdminTheme + @"\emails.json");
+            string file = Path.Combine(ApplicationSettings.WebRootPath, @"admin\emails.json");
 
             using (StreamReader r = new StreamReader(file))
             {

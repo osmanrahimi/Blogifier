@@ -1,6 +1,7 @@
-﻿@model Blogifier.Core.Data.Models.SettingsApplication
+﻿@using Blogifier.Core.Common
+@model Blogifier.Core.Data.Models.SettingsApplication
 @{
-    Layout = "~/Views/Blogifier/Admin/OneThree/_Layout/_Settings.cshtml";
+    Layout = $"~/{ApplicationSettings.BlogAdminFolder}/_Layout/_Settings.cshtml";
 }
 <div class="bf-settings bf-settings-boxed bf-settings-appsettings" data-page-title="Blog">
     <form method="post" asp-controller="Settings" asp-action="AppSettings" asp-antiforgery="true">
@@ -63,7 +64,7 @@
     </form>
 </div>
 
-@Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_FileManager.cshtml")
+@Html.Partial($"~/{ApplicationSettings.BlogAdminFolder}/_Shared/_FileManager.cshtml")
 
 @section Scripts{
     @if (!string.IsNullOrEmpty(ViewBag.Message))
