@@ -1,17 +1,13 @@
-    @using Blogifier.Core.Common
-
-@{
-    var themeFolder = "blogifier/admin/onethree";
-}
+@using Blogifier.Core.Common
 @Html.Partial("~/Views/Blogifier/Admin/OneThree/_Shared/_about.cshtml")
 <form method="post" id="frmLogOut" asp-controller="Account" asp-action="Logout" asp-antiforgery="true"></form>
-<script src="~/@themeFolder/js/lib/jquery.min.js"></script>
-<script src="~/@themeFolder/js/lib/toastr.min.js"></script>
-<script src="~/@themeFolder/js/lib/popper.min.js"></script>
-<script src="~/@themeFolder/js/lib/bootstrap.min.js"></script>
-<script src="~/@themeFolder/js/app/app.js"></script>
-<script src="~/@themeFolder/js/app/dataService.js"></script>
-<script src="~/@themeFolder/js/app/uploadController.js"></script>
+<script src="~/admin/js/lib/jquery.min.js"></script>
+<script src="~/admin/js/lib/toastr.min.js"></script>
+<script src="~/admin/js/lib/popper.min.js"></script>
+<script src="~/admin/js/lib/bootstrap.min.js"></script>
+<script src="~/admin/js/app/app.js"></script>
+<script src="~/admin/js/app/dataService.js"></script>
+<script src="~/admin/js/app/uploadController.js"></script>
 <script>
     var webRoot = '@Url.Content("~/")';
     var blogRoute = '@ApplicationSettings.BlogRoute';
