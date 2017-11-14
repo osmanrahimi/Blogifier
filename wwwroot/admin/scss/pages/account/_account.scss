@@ -1,0 +1,23 @@
+.bf-account {
+  background-color: #f4f4f4;
+  padding-top: 6rem;
+  font-size: .875rem;
+
+  &-inner {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10rem rgba(#000,.1);
+  }
+
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 24.5rem;
+  }
+
+
+h1 {
+  font-size: 1.5rem;
+}
+}

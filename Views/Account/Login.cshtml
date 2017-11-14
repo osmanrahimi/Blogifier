@@ -7,8 +7,10 @@
     bool showForgotPassword = ViewData["ShowFogotPassword"] != null && (bool)ViewData["ShowFogotPassword"];
 }
 
-<div class="">
+<div class="form">
   <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <h1>Welcome!</h1>
+    <p>You can sign in or <a href="~/">go back to blog</a>.</p>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
       <label asp-for="Email"></label>
@@ -28,23 +30,20 @@
         </label>
       </div>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
-    </div>
-    <div class="form-group">
-        @if (showForgotPassword)
-        {
-            <p>
-                <a asp-action="ForgotPassword">Forgot your password?</a>
-            </p>
-        }
-        @if (showRegistration)
-        {
-            <p>
-                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-            </p>
-        }
-    </div>
+    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+
+    @if (showForgotPassword)
+    {
+        <p>
+            <a asp-action="ForgotPassword">Forgot your password?</a>
+        </p>
+    }
+    @if (showRegistration)
+    {
+        <p>
+            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+        </p>
+    }
   </form>
 </div>
 @section Scripts {
