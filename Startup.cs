@@ -5,6 +5,7 @@ using Blogifier.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,7 +45,17 @@ namespace Blogifier
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IConfigService, ConfigService>();
 
-            services.AddMvc();
+            services.AddMvc()
+            .ConfigureApplicationPartManager(p =>
+            {
+                foreach (var assembly in Core.Configuration.GetAssemblies())
+                {
+                    if (assembly.GetName().Name != "Blogifier")
+                    {
+                        p.ApplicationParts.Add(new AssemblyPart(assembly));
+                    }
+                }
+            });
 
             Core.Configuration.InitServices(services, databaseOptions, Configuration);
         }
