@@ -7,7 +7,7 @@
         font-weight: 700;
 
         a {
-            color: $color-blogifier;
+            color: $color-theme;
         }
     }
 
@@ -24,7 +24,7 @@
             color: #888;
 
             &:hover {
-                color: $color-blogifier;
+                color: $color-theme;
             }
         }
     }
@@ -84,8 +84,8 @@
         font-weight: 700;
 
         &:hover {
-            border-color: $color-blogifier;
-            color: $color-blogifier;
+            border-color: $color-theme;
+            color: $color-theme;
         }
     }
 

@@ -1,0 +1,11 @@
+.wrapper {
+  &.is-home {
+    padding-left: $header-width;
+  }
+}
+
+.content {
+  @media screen and (min-width: 1024px) {
+    padding: 3rem;
+  }
+}
