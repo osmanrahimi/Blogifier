@@ -4,9 +4,10 @@
 @using Blogifier.Core.Extensions
 @model BlogPostsModel
 
-<section class="container">
-    @await Component.InvokeAsync("PostList", new { listType = ListType.FeaturedPosts, count = 2 })
-</section>
+<h2>Latest:</h2>
+
+
+@await Component.InvokeAsync("PostList", new { listType = ListType.FeaturedPosts, count = 2 })
 
 @if (Model.Posts != null)
 {
@@ -17,8 +18,8 @@
             <article class="post">
                 <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
                 <div class="post-meta">
-                    <a class="post-meta-author mr-3" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
-                    <time class="post-meta-time mr-3">/ @item.Published.ToFriendlyDateString()</time>
+                    <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
+                    <time class="post-meta-time">/ @item.Published.ToFriendlyDateString()</time>
                 </div>
                 <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
                 <a class="post-more btn btn-rounded btn-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read</a>
