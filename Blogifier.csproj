@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Lib\*.dll">
       <Link>%(Filename).dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
