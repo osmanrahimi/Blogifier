@@ -9,27 +9,14 @@
     }
     catch { }
 }
-<header class="header" style="background-image: url('@Model.CoverImg')">
-    <h1 class="blog-logo"><a href="~/@logoUrl"><img src="@logoImg" alt="@ApplicationSettings.Title" /></a></h1>
-    <button class="blog-header-toggle"><i class="fa fa-navicon"></i></button>
-    <section class="blog-header-modal">
-        <button class="blog-header-toggle"><i class="fa fa-times"></i></button>
-        <nav class="blog-nav">
-            <ul>
-                <li><a href="~/">Home</a></li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li><a href="~/admin">Admin</a></li>
-                    <li><a href="#" onclick="profileLogOut(); return false;">Logoff</a></li>
-                }
-                else
-                {
-                    <li><a href="~/account/login?ReturnUrl=%2Fadmin">Login</a></li>
-                }
-            </ul>
-        </nav>
-        <form class="blog-search" role="search" asp-controller="Blog" asp-action="Search" method="post">
-            <input type="search" id="term" name="term" placeholder="Search..." autocomplete="off">
-        </form>
-    </section>
+<header class="blog-header d-flex flex-column" style="background-image: url('@Model.CoverImg')">
+    <a href="~/@logoUrl" class="blog-logo d-none mt-auto"><img src="@logoImg" alt="@ApplicationSettings.Title" /></a>
+    <h1 class="blog-title mt-auto"><a href="~/@logoUrl">@ApplicationSettings.Title</a></h1>
+    <p class="blog-desc">@ApplicationSettings.Description</p>
+    <ul class="blog-social nav">
+      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-twitter"></i></a></li>
+      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-google-plus"></i></a></li>
+      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
+      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-linkedin"></i></a></li>
+    </ul>
 </header>
