@@ -1,11 +1,14 @@
 .wrapper {
   &.is-home {
     padding-left: $header-width;
+    @media screen and (min-width: 1440px) {
+      padding-left: $header-width-lg;
+    }
   }
 }
 
 .content {
   @media screen and (min-width: 1024px) {
-    padding: 3rem;
+    padding: 5rem;
   }
 }

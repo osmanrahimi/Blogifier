@@ -20,8 +20,11 @@
     left: 0;
     bottom: 0;
     background: #000;
-    opacity: .5;
+    opacity: .25;
     z-index: -1;
+  }
+  @media screen and (min-width: 1440px) {
+    width: $header-width-lg;
   }
 }
 
@@ -31,7 +34,6 @@
   font-family: $font-heading;
   font-size: 2.625rem;
   margin-bottom: 1rem;
-
 
   a {
     color: #fff;

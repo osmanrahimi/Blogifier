@@ -17,21 +17,11 @@
             <article class="post">
                 <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
                 <div class="post-meta">
-                    <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
-                    <time class="post-meta-time">@item.Published.ToFriendlyDateString()</time>
-                    @if (item.PostCategories != null && item.PostCategories.Count > 0)
-                        {
-                        <span class="post-meta-category">
-                            /
-                            @foreach (var cat in item.PostCategories)
-                            {
-                                <a href="~/@ApplicationSettings.BlogRoute@item.BlogSlug/@cat">@cat</a>
-                            }
-                        </span>
-                    }
+                    <a class="post-meta-author mr-3" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
+                    <time class="post-meta-time mr-3">/ @item.Published.ToFriendlyDateString()</time>
                 </div>
                 <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
-                <a class="btn btn-rounded btn-outline-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read More</a>
+                <a class="post-more btn btn-rounded btn-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read</a>
             </article>
         }
     }
