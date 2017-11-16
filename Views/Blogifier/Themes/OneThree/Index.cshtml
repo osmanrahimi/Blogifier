@@ -50,4 +50,17 @@
         }
     }
 }
+
+<section class="container">
+    @try
+    {
+        @await Component.InvokeAsync("Newsletter")
+    }
+    catch (Exception ex)
+    {
+        <h4>Error loading widget</h4>
+        <div>@ex.Message</div>
+    }
+</section>
+
 @Html.Partial($"~/{ApplicationSettings.BlogThemesFolder}/OneThree/_Shared/_Pager.cshtml", Model.Pager)

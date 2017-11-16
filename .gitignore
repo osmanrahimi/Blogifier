@@ -290,3 +290,5 @@ __pycache__/
 # Blogifier specific
 Logs/
 Data/*.db
+
+!Lib/
