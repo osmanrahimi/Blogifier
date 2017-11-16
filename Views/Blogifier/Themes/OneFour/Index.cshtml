@@ -15,32 +15,23 @@
         if (!item.IsFeatured)
         {
             <article class="post">
-                <section class="container">
-                    <header class="post-header">
-                        <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
-                        <div class="post-meta">
-                            <a href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">
-                                <img class="post-meta-img" src="@item.Avatar" alt="@item.AuthorName" />
-                                <span class="post-meta-author">@item.AuthorName</span>
-                            </a>
-                            <time class="post-meta-time">@item.Published.ToFriendlyDateString()</time>
-                            @if (item.PostCategories != null && item.PostCategories.Count > 0)
+                <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
+                <div class="post-meta">
+                    <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
+                    <time class="post-meta-time">@item.Published.ToFriendlyDateString()</time>
+                    @if (item.PostCategories != null && item.PostCategories.Count > 0)
+                        {
+                        <span class="post-meta-category">
+                            /
+                            @foreach (var cat in item.PostCategories)
                             {
-                                <span class="post-meta-category">
-                                    in
-                                    @foreach (var cat in item.PostCategories)
-                                    {
-                                        <a href="~/@ApplicationSettings.BlogRoute@item.BlogSlug/@cat">@cat</a>
-                                    }
-                                </span>
+                                <a href="~/@ApplicationSettings.BlogRoute@item.BlogSlug/@cat">@cat</a>
                             }
-                        </div>
-                    </header>
-                    <div class="post-content">
-                        <p class="post-excerpt">@Html.Raw(item.Content)</p>
-                        <a class="post-more" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read More</a>
-                    </div>
-                </section>
+                        </span>
+                    }
+                </div>
+                <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
+                <a class="btn btn-rounded btn-outline-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read More</a>
             </article>
         }
     }
