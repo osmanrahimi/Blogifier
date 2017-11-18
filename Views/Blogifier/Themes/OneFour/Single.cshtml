@@ -1,13 +1,12 @@
 ﻿@model Blogifier.Core.Data.Models.BlogPostDetailModel
 @using Blogifier.Core.Common
 @{
-    Layout = $"~/{ApplicationSettings.BlogThemesFolder}/OneFour/Layout/_Post.cshtml";
     var cf = Model.CustomFields;
     var customCode = (cf.ContainsKey("Post") && !string.IsNullOrEmpty(cf["Post"])) ? cf["Post"] : "";
     var avatar = string.IsNullOrEmpty(Model.BlogPost.Profile.Avatar) ? ApplicationSettings.ProfileAvatar : Model.BlogPost.Profile.Avatar;
 }
 <article class="post-single">
-    <header class="page-cover post-header" style="background-image: url('@Model.CoverImg')">
+    <header class="post-cover post-header" style="background-image: url('@Model.CoverImg')">
         <section class="container">
             <h2 class="post-title">@Model.BlogPost.Title</h2>
             <div class="post-meta">

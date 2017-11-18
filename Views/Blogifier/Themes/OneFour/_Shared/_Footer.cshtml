@@ -9,29 +9,28 @@
     catch { }
 }
 
-<ul>
-    <li><a href="~/">Home</a></li>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <li><a href="~/admin">Admin</a></li>
-                    <li><a href="#" onclick="profileLogOut(); return false;">Logoff</a></li>
-    }
-    else
-    {
-        <li><a href="~/account/login?ReturnUrl=/admin">Login</a></li>
-    }
-</ul>
-<form class="blog-search" role="search" asp-controller="Blog" asp-action="Search" method="post">
-    <input type="search" id="term" name="term" placeholder="Search..." autocomplete="off">
-</form>
-<div class="overlay"></div>
+<div class="blog-search">
+    <form role="search" asp-controller="Blog" asp-action="Search" method="post">
+        <input type="search" id="term" name="term" placeholder="Search..." autocomplete="off">
+    </form>
+</div>
 <footer class="blog-footer">
-    <div class="container">
-        <p>Copyright © @DateTime.Now.Year @ApplicationSettings.Title.</p>
-        <p>Powered by <a href="http://blogifier.net/" data-toggle="tooltip" target="_blank" title="Version - @ApplicationSettings.Version">Blogifier</a>. Designed by <a href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
+    <div class="container d-flex">
+        <p>Copyright © @DateTime.Now.Year. Powered by <a href="http://blogifier.net/" data-toggle="tooltip" target="_blank" title="Version - @ApplicationSettings.Version">Blogifier</a>. Designed by <a href="https://francis.bio/" target="_blank" rel="nofollow">Francis</a>.</p>
+        <div class="ml-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="~/admin">Admin</a>
+            }
+            else
+            {
+                <a href="~/account/login?ReturnUrl=/admin">Login</a>
+            }
+        </div>
     </div>
 </footer>
-<form method="post" id="frmLogOut" asp-controller="Account" asp-action="Logout" asp-antiforgery="true"></form>
+@*<a href="#" onclick="profileLogOut(); return false;">Logoff</a>
+<form method="post" id="frmLogOut" asp-controller="Account" asp-action="Logout" asp-antiforgery="true"></form>*@
 <script src="~/themes/OneFour/js/jquery.min.js"></script>
 <script src="~/themes/OneFour/js/popper.min.js"></script>
 <script src="~/themes/OneFour/js/bootstrap.min.js"></script>
