@@ -1,24 +1,37 @@
 .post-single {
-  border-bottom: 1px solid #f8f8f8;
+  margin-bottom: 5rem;
 
   .post-cover {
-    padding-top: 5rem;
+    height: 30rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .post-body {
+    background-color: #fff;
+    box-shadow: 0 0 10rem rgba(#000,.1);
+    margin-top: -10rem;
+    padding: 5rem;
+    border-radius: 1rem;
   }
 
   .post-title {
+    font-family: $font-heading;
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: #fff;
   }
 
   .post-meta {
-    padding: .375rem 0 0 3.75rem;
-    min-height: 3rem;
+    padding-top: .25rem;
+    padding-left: 3.25rem;
+    min-height: 2.5rem;
     position: relative;
-    font-size: 1rem;
+    font-size: .875rem;
     color: #888;
-    line-height: 1.125;
+    line-height: 1.25;
+    margin-bottom: 2rem;
 
     a {
       color: #888;
@@ -29,17 +42,22 @@
     }
   }
 
+  .post-meta-author {
+    font-weight: 700;
+    color: #000;
+  }
+
   .post-meta-img {
     position: absolute;
     left: 0;
     top: 0;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
   }
 
   .post-meta-time {
-    font-size: .875rem;
+    font-size: .75rem;
 
     &::before {
       content: "";
@@ -51,25 +69,19 @@
   }
 
   .post-meta-category {
-    font-size: .875rem;
+    font-size: .75rem;
 
     a {
-      &::after {
-        content: ", ";
-      }
-
-      &:last-child {
-        &::after {
-          display: none;
-        }
-      }
+      background-color: #000;
+      color: #fff;
+      display: inline-block;
+      padding: .3rem .75rem .25rem;
+      border-radius: 4rem;
+      text-transform: uppercase;
     }
   }
 
   .post-content {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-
     p {
       margin-bottom: 1.5rem;
     }
@@ -95,32 +107,6 @@
         font-size: .75rem;
         color: #666;
       }
-    }
-  }
-  @media screen and (max-width:57rem) {
-    .post-header {
-      padding: 3rem 5rem;
-    }
-
-    .post-title {
-      font-size: 2rem;
-    }
-
-    .post-meta {
-      padding: 0;
-    }
-
-    .post-meta-img {
-      display: none;
-    }
-
-    .post-content {
-      padding: 1rem;
-    }
-  }
-  @media screen and (max-width:48rem) {
-    .post-header {
-      padding: 2rem;
     }
   }
 }

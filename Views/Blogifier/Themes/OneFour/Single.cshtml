@@ -6,17 +6,19 @@
     var avatar = string.IsNullOrEmpty(Model.BlogPost.Profile.Avatar) ? ApplicationSettings.ProfileAvatar : Model.BlogPost.Profile.Avatar;
 }
 <article class="post-single">
-    <header class="post-cover post-header" style="background-image: url('@Model.CoverImg')">
-        <section class="container">
+    <div class="post-cover" style="background-image: url('@Model.CoverImg')"></div>
+    <section class="container post-body">
+        <header class="post-header">
             <h2 class="post-title">@Model.BlogPost.Title</h2>
-            <div class="post-meta">
-                <a href="~/@ApplicationSettings.BlogRoute@Model.BlogPost.Profile.Slug">
-                    <img class="post-meta-img" src="@avatar" alt="@Model.BlogPost.Profile.AuthorName" />
-                    <span class="post-meta-author">@Model.BlogPost.Profile.AuthorName</span>
-                </a>
-                <time class="post-meta-time">@string.Format("{0:MMM d, yyyy}", Model.BlogPost.Published)</time>
-                <span class="post-meta-category">
-                    in
+            <div class="post-meta d-flex">
+                <div class="post-meta-left mr-5">
+                    <a href="~/@ApplicationSettings.BlogRoute@Model.BlogPost.Profile.Slug">
+                        <img class="post-meta-img" src="@avatar" alt="@Model.BlogPost.Profile.AuthorName" />
+                        <span class="post-meta-author">@Model.BlogPost.Profile.AuthorName</span>
+                    </a>
+                    <time class="post-meta-time">@string.Format("{0:MMM d, yyyy}", Model.BlogPost.Published)</time>
+                </div>
+                <div class="post-meta-category my-auto">
                     @if (Model.BlogCategories.Count > 0)
                     {
                         @foreach (var cat in Model.BlogCategories)
@@ -24,12 +26,13 @@
                             <a href="~/category/@cat.Value">@cat.Text</a>
                         }
                     }
-                </span>
+                </div>
             </div>
-        </section>
-    </header>
-    <div class="post-content container">
-        @Html.Raw(Model.BlogPost.Content)
-        @Html.Raw(customCode)
-    </div>
+        </header>
+        <div class="post-content">
+            @Html.Raw(Model.BlogPost.Content)
+            @Html.Raw(customCode)
+        </div>
+    </section>
+
 </article>
