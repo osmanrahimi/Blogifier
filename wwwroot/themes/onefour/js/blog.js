@@ -28,3 +28,13 @@ $('[data-toggle="tooltip"]').tooltip({
 });
 
 
+var blogWrapper = $(".wrapper");
+var overlay = $(".overlay");
+var headerToggle = $(".header-toggle");
+function openHeader() {
+  $(headerToggle).toggleClass("is-active");
+  $(blogWrapper).toggleClass("header-open");
+  $(overlay).fadeToggle();
+}
+$(headerToggle).on('click', openHeader);
+$(overlay).on('click', openHeader);

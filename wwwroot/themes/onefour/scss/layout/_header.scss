@@ -1,34 +1,23 @@
 .blog-header {
-  position: fixed;
-  top: 0;
+  position: absolute;
   left: 0;
-  bottom: 0;
-  width: $header-width;
+  right: 0;
   overflow: hidden;
-  color: #fff;
-  background-color: #111;
-  background-position: center;
-  background-size: cover;
-  padding: 5rem;
-
-  &:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: #000;
-    opacity: .25;
-    z-index: -1;
-  }
-  @media screen and (min-width: 1440px) {
-    width: $header-width-lg;
+  z-index: 1000;
+  height: 4rem;
+  border-bottom: 1px solid rgba(#fff, .1);
+  .container {
+    height: 100%;
   }
 }
 
-.blog-logo {}
+.blog-logo {
+  display: block;
+
+  img {
+    max-height: 2.5rem;
+  }
+}
 
 .blog-title {
   font-family: $font-heading;
@@ -38,12 +27,6 @@
   a {
     color: #fff;
   }
-}
-
-.blog-desc {
-  font-size: 1rem;
-  font-weight: 300;
-  margin-bottom: 3rem;
 }
 
 .blog-social {
@@ -67,10 +50,17 @@
 
   &-icon {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 
     &.fa-twitter {
-      font-size: 1.625rem;
+      font-size: 1.25rem;
     }
   }
+}
+
+.header-toggle {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  z-index: 1001;
 }

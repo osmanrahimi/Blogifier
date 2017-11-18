@@ -1,6 +1,7 @@
 ﻿@model Blogifier.Core.Data.Models.BlogPostDetailModel
 @using Blogifier.Core.Common
 @{
+    Layout = $"~/{ApplicationSettings.BlogThemesFolder}/OneFour/Layout/_Post.cshtml";
     var cf = Model.CustomFields;
     var customCode = (cf.ContainsKey("Post") && !string.IsNullOrEmpty(cf["Post"])) ? cf["Post"] : "";
     var avatar = string.IsNullOrEmpty(Model.BlogPost.Profile.Avatar) ? ApplicationSettings.ProfileAvatar : Model.BlogPost.Profile.Avatar;

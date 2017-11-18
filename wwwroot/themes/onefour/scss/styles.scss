@@ -14,14 +14,15 @@
 @import "layout/main";
 @import "layout/header";
 @import "layout/footer";
+@import "layout/cover";
 
 // Components
-@import "components/cover";
 @import "components/button";
 @import "components/post";
 @import "components/pagination";
 @import "components/tooltip";
 @import "components/browserupgrade";
+@import "components/hamburgers";
 
 // Pages
 @import "pages/single";

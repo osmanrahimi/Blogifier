@@ -9,14 +9,21 @@
     }
     catch { }
 }
-<header class="blog-header d-flex flex-column" style="background-image: url('@Model.CoverImg')">
-    <a href="~/@logoUrl" class="blog-logo d-none mt-auto"><img src="@logoImg" alt="@ApplicationSettings.Title" /></a>
-    <h1 class="blog-title mt-auto"><a href="~/@logoUrl">@ApplicationSettings.Title</a></h1>
-    <p class="blog-desc">@ApplicationSettings.Description</p>
-    <ul class="blog-social nav">
-      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-twitter"></i></a></li>
-      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-google-plus"></i></a></li>
-      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
-      <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-linkedin"></i></a></li>
-    </ul>
+
+<header class="blog-header d-flex flex-column">
+    <div class="container d-flex">
+        <a href="~/@logoUrl" class="blog-logo my-auto"><img src="@logoImg" alt="@ApplicationSettings.Title" /></a>
+        <ul class="blog-social nav ml-auto my-auto">
+            <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-twitter"></i></a></li>
+            <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-google-plus"></i></a></li>
+            <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-facebook-official"></i></a></li>
+            <li class="blog-social-item"><a href="#" target="_blank" class="blog-social-link"><i class="blog-social-icon fa fa-linkedin"></i></a></li>
+        </ul>
+    </div>
 </header>
+
+<button class="header-toggle hamburger color-white hamburger--arrow d-block d-lg-none" type="button">
+    <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+    </span>
+</button>

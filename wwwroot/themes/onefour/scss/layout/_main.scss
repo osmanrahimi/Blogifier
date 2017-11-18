@@ -1,14 +1,23 @@
-.wrapper {
-  &.is-home {
-    padding-left: $header-width;
-    @media screen and (min-width: 1440px) {
-      padding-left: $header-width-lg;
-    }
-  }
+.wrapper {}
+
+.blog-content {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-.content {
-  @media screen and (min-width: 1024px) {
-    padding: 5rem;
-  }
+
+.container {
+  max-width: 60rem;
+}
+
+.overlay {
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .85;
+  z-index: 999;
+  display: none;
 }

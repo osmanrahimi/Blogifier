@@ -8,6 +8,23 @@
     }
     catch { }
 }
+
+<ul>
+    <li><a href="~/">Home</a></li>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li><a href="~/admin">Admin</a></li>
+                    <li><a href="#" onclick="profileLogOut(); return false;">Logoff</a></li>
+    }
+    else
+    {
+        <li><a href="~/account/login?ReturnUrl=/admin">Login</a></li>
+    }
+</ul>
+<form class="blog-search" role="search" asp-controller="Blog" asp-action="Search" method="post">
+    <input type="search" id="term" name="term" placeholder="Search..." autocomplete="off">
+</form>
+<div class="overlay"></div>
 <footer class="blog-footer">
     <div class="container">
         <p>Copyright © @DateTime.Now.Year @ApplicationSettings.Title.</p>

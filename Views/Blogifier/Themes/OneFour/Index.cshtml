@@ -4,27 +4,44 @@
 @using Blogifier.Core.Extensions
 @model BlogPostsModel
 
-<h2>Latest:</h2>
-
-
-@await Component.InvokeAsync("PostList", new { listType = ListType.FeaturedPosts, count = 2 })
-
-@if (Model.Posts != null)
-{
-    foreach (var item in Model.Posts)
+@{
+    var logoImg = ApplicationSettings.ProfileLogo;
+    var logoUrl = "http://blogifier.net";
+    try
     {
-        if (!item.IsFeatured)
-        {
-            <article class="post">
-                <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
-                <div class="post-meta">
-                    <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
-                    <time class="post-meta-time">/ @item.Published.ToFriendlyDateString()</time>
-                </div>
-                <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
-                <a class="post-more btn btn-rounded btn-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read</a>
-            </article>
-        }
+        logoImg = Model.LogoImg;
+        logoUrl = Model.LogoUrl;
     }
+    catch { }
 }
-@Html.Partial($"~/{ApplicationSettings.BlogThemesFolder}/OneFour/_Shared/_Pager.cshtml", Model.Pager)
+
+<div class="blog-cover" style="background-image: url('@Model.CoverImg')">
+    <h1 class="blog-title"><a href="~/@logoUrl">@ApplicationSettings.Title</a></h1>
+    <p class="blog-desc">@ApplicationSettings.Description</p>
+</div>
+
+<div class="blog-content">
+    <div class="container">
+        @await Component.InvokeAsync("PostList", new { listType = ListType.FeaturedPosts, count = 2 })
+
+        @if (Model.Posts != null)
+        {
+            foreach (var item in Model.Posts)
+            {
+                if (!item.IsFeatured)
+                {
+                    <article class="post">
+                        <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
+                        <div class="post-meta">
+                            <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
+                            <time class="post-meta-time">/ @item.Published.ToFriendlyDateString()</time>
+                        </div>
+                        <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
+                        <a class="post-more btn btn-rounded btn-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read</a>
+                    </article>
+                }
+            }
+        }
+        @Html.Partial($"~/{ApplicationSettings.BlogThemesFolder}/OneFour/_Shared/_Pager.cshtml", Model.Pager)
+    </div>
+</div>
