@@ -18,13 +18,14 @@
 
 // Components
 @import "components/button";
-@import "components/post";
 @import "components/pagination";
 @import "components/tooltip";
 @import "components/browserupgrade";
 @import "components/hamburgers";
+@import "components/modal";
 
 // Pages
+@import "pages/post";
 @import "pages/single";
 @import "pages/featured";
 @import "pages/author";

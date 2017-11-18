@@ -6,9 +6,11 @@
   z-index: 1000;
   height: 4rem;
   border-bottom: 1px solid rgba(#fff, .1);
+
   .container {
     height: 100%;
   }
+
 }
 
 .blog-logo {
@@ -57,10 +59,40 @@
     }
   }
 }
+//
 
-.header-toggle {
-  position: absolute;
-  top: 3rem;
-  left: 3rem;
-  z-index: 1001;
+.blog-search {
+  .form-control {
+    border: 0;
+  }
+  @media screen and (min-width: 576px) {
+    .modal-dialog {
+      margin-top: 5rem;
+    }
+  }
+
+  &-toggle {
+    color: #fff;
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+    position: relative;
+
+    &:hover {
+      .fa {
+        opacity: .5;
+      }
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 1.5rem;
+      background-color: rgba(#fff,.25);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }

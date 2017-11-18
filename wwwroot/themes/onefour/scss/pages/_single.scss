@@ -78,6 +78,10 @@
       padding: .3rem .75rem .25rem;
       border-radius: 4rem;
       text-transform: uppercase;
+
+      &:hover{
+        background-color: #222;
+      }
     }
   }
 
