@@ -1,16 +1,19 @@
 .post {
   position: relative;
-  min-height: 11rem;
-  padding-left: 18rem;
-  max-width: 768px;
-  margin-bottom: 4rem;
+  min-height: 12.5rem;
+  padding-left: 20rem;
+  margin-bottom: 5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .post-cover {
     position: absolute;
     left: 0;
     top: 0;
-    width: 16rem;
-    height: 11rem;
+    width: 18rem;
+    height: 12.5rem;
     overflow: hidden;
     border-radius: .25rem;
 
@@ -45,18 +48,14 @@
   }
 
   .post-meta {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     display: block;
     font-size: .75rem;
     text-transform: uppercase;
-    color: #888;
-
-    i {
-      color: #aaa;
-    }
+    color: #aaa;
 
     a {
-      color: #888;
+      color: #aaa;
 
       &:hover {
         color: #000;
@@ -78,10 +77,20 @@
     }
   }
 
+  .post-description {
+    font-size: .875rem;
+    margin-bottom: 1rem;
+    color: #000;
+
+    p {
+      margin-bottom: .25rem;
+    }
+  }
+
   .post-title {
     font-family: $font-heading;
     font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.3;
 
     a {

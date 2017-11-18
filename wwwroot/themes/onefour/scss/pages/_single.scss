@@ -24,7 +24,6 @@
   }
 
   .post-meta {
-    padding-top: .25rem;
     padding-left: 3.25rem;
     min-height: 2.5rem;
     position: relative;
@@ -45,6 +44,8 @@
   .post-meta-author {
     font-weight: 700;
     color: #000;
+    padding-top: .25rem;
+    display: block;
   }
 
   .post-meta-img {
@@ -79,7 +80,7 @@
       border-radius: 4rem;
       text-transform: uppercase;
 
-      &:hover{
+      &:hover {
         background-color: #222;
       }
     }

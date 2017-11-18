@@ -31,12 +31,13 @@
                 if (!item.IsFeatured)
                 {
                     <article class="post">
+                        <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
                         <div class="post-cover"><img src="@item.Image" alt="@item.Title"></div>
                         <div class="post-meta">
                             <a class="post-meta-author" href="~/@ApplicationSettings.BlogRoute@item.BlogSlug">@item.AuthorName</a>
                             <time class="post-meta-time">/ @item.Published.ToFriendlyDateString()</time>
                         </div>
-                        <h2 class="post-title"><a href="~/@ApplicationSettings.BlogRoute@item.Slug">@item.Title</a></h2>
+                        <div class="post-description">@Html.Raw(item.Content)</div>
                         <a class="post-more btn btn-rounded btn-dark" href="~/@ApplicationSettings.BlogRoute@item.Slug">Read</a>
                     </article>
                 }
